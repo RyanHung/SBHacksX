@@ -53,3 +53,7 @@ function selectOptionTreatment(option) {
     }
 
 }
+
+function askChatGPT() {
+    //GPT stuff goes here
+}

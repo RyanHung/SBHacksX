@@ -19,5 +19,7 @@ if (article) {
   // Support for article docs with date
   const date = article.querySelector("time")?.parentNode;
 
-  (date ?? heading).insertAdjacentElement("afterend", badge);
+  if (date || heading) {
+    (date ?? heading).insertAdjacentElement("afterend", badge);
+  }
 }
