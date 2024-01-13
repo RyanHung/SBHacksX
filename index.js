@@ -9,7 +9,8 @@ import OpenAI from "openai";
 */
 
 const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY
+    //Dylan's personal key DO NOT misuse
+    apiKey: "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"
 });
 
 const completion = await openai.chat.completions.create({
