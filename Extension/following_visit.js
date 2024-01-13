@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var ageContent = document.getElementById("age_content");
 
     ageButton.addEventListener("click", function(){
-        toggleDropdown("age")
+        toggleDropdown("age");
     });
     
     ageContent.addEventListener("click", function (event) {
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var symptomsContent = document.getElementById("symptoms_content");
 
     symptomsButton.addEventListener("click", function(){
-        toggleDropdown("symptoms")
+        toggleDropdown("symptoms");
     });
     
     symptomsContent.addEventListener("click", function (event) {
@@ -46,11 +46,29 @@ document.addEventListener("DOMContentLoaded", function () {
         window.history.back();
     }
 });
+
+function closeAllDropdowns() {
+    var dropdowns = document.getElementsByClassName('dropdown-content');
+    for(var i = 0; i < dropdowns.length; i++)
+    {
+        dropdowns[i].style.display = 'none';   
+    }
+}
+
 function toggleDropdown(id) {
     var dropdown = document.getElementById(id);
-    dropdown.classList.toggle("open");
-
     var dropdownContent = document.getElementById(id + "_content");
+    if(dropdownContent.style.display == 'block')
+    {
+        closeAllDropdowns();
+    }
+    else
+    {
+        closeAllDropdowns();
+        dropdownContent.style.display = 'block';
+    }
+
+    
     dropdownContent.style.width = dropdown.offsetWidth + "px";
 }
 
@@ -68,14 +86,33 @@ function selectOptionAge(option) {
         case '5 - 11 Years':
             age = '5-11';
             break;
-        case '12+ Years':
+        case '12 Years or Older':
             age = '12+';
             break;
     }
 
+    agemodify()
 }
 
-var symptoms_weight;
+function agemodify()
+{
+    var symptoms_dropdown_button = document.getElementById("symptoms_button");
+    var symptoms_dropdown_content = document.getElementById("symptoms_content")
+
+    if(age == '0-4')
+    {
+        symptoms_dropdown_button.innerHTML = 'Select an Option';
+        symptoms_dropdown_content.innerHTML = '<a href="#" data-option="<= 2 days per week"><= 2 days per week</a> <a href="#" data-option="> 2 days per week"> > 2 days per week</a><a href="#" data-option="Throughout the day">Throughout the day</a><a href="#" data-option="Not applicable">Not applicable</a>';
+    }
+    else if(age == '5-11')
+    {
+        symptoms_dropdown_button.innerHTML = 'Select an Option';
+        symptoms_dropdown_content.innerHTML = '<a href="#" data-option="<= 2 days per week but not more than once on each day"><= 2 days per week but not more than once on each day</a> <a href="#" data-option="> 2 days per week or multiple times on <= 2 days per weekk">> 2 days per week or multiple times on <= 2 days per week</a><a href="#" data-option="Throughout the day">Throughout the day</a><a href="#" data-option="Not applicable">Not applicable</a>';
+    }
+}
+
+var weight = 0;
+var weightcount = 0;
 
 function selectOptionSymptoms(option) {
     var dropdownButton = document.getElementById("symptoms_button"); //make sure id matches drop down menu
@@ -83,14 +120,24 @@ function selectOptionSymptoms(option) {
     toggleDropdown("symptoms"); // Close the dropdown after selecting an option
 
     switch (option) {
-        case '<= 2 days per week':
-            symptoms_weight = 0;
+        case '<= 2 days per week but not more than once on each day':
+            weightcount += 1;
             break;
+        case '<= 2 days per week but more than once on each day':
+            if(age == '5-11')
+            {
+                weight += 1;
+            }
+            weightcount += 1;
         case "> 2 days per week":
-            symptoms_weight = 1;
+            weight += 1;
+            weightcount += 1;
             break;
         case "Throughout the day":
-            symptoms_weight = 2;
+            weight += 2;
+            weightcount += 1;
+            break;
+        case "Not Applicable":
             break;
     }
 
