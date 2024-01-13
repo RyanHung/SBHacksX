@@ -54,6 +54,53 @@ function selectOptionTreatment(option) {
 
 }
 
-function askChatGPT() {
-    //GPT stuff goes here
+document.getElementById("gptButton").addEventListener("click", askChatGPT);
+
+async function askChatGPT() {
+      // Get the user's question from the textarea
+  const question = document.getElementById("question").value;
+
+  // Replace 'YOUR_API_KEY' with your actual API key
+  const apiKey = "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";
+
+  // Check if the question is not empty
+  if (question.trim() !== "") {
+    try {
+    // Make an HTTP request to the ChatGPT API
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`
+      },
+      body: JSON.stringify({
+        messages: [
+            {
+                role: "assistant", content: "You are a helpful assistant providing medical advice for patients asking for help"
+            },
+            {
+                role: 'user', content: question
+            }
+        ]
+      })
+    });
+
+    if (!response.ok) {
+        throw new Error('Request failed');
+    }
+    const data = await response.json();
+
+    // Handle the response from ChatGPT
+    const chatGPTResponse = data.choices[0].message.content;
+
+    // Display the response in an alert for simplicity (you can customize this)
+    alert(`ChatGPT says: ${chatGPTResponse}`);
+    }
+    catch(error) {
+      console.error('Error:', error);
+      alert('An error occurred while contacting ChatGPT. Please try again.');
+    }
+  } else {
+    alert('Please enter a question before asking ChatGPT.');
+  }
 }
