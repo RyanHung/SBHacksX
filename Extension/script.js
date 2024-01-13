@@ -30,4 +30,24 @@ function selectOption(option) {
     var dropdownButton = document.getElementById("dropdownButton");
     dropdownButton.innerText = option;
     toggleDropdown(); // Close the dropdown after selecting an option
+
+    switch (option) {
+        case 'initial':
+            // Redirect to initial treatment
+            window.location.href = 'asthma_initial_visit.html';
+            break;
+        case 'following':
+            // Redirect to following treatment
+            window.location.href = 'asthma_following_visit.html';
+            break;
+        case 'stepwise':
+            // Redirect to stepwise approach
+            window.location.href = 'asthma_stepwise_approach.html';
+            break;
+        case 'dosage':
+            // Redirect to dosages
+            window.location.href = 'asthma_daily_dosage.html';
+            break;
+    }
+
 }
