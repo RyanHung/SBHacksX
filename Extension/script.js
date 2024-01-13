@@ -1,4 +1,4 @@
-import {openai, completion} from './index.js';
+import {openai, completion} from '../index.js';
 
 document.addEventListener("DOMContentLoaded", function () {
     var treatmentButton = document.getElementById("treatment_button"); //copy lines 2-13 for every dropdown menu
