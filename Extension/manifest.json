@@ -1,23 +1,13 @@
 {
-    "manifest_version": 3,
-    "name": "Medication Diagnosis TLDR",
-    "description": "This an extension for abstracting information allowing for easier classification of severity and treatment",
-    "version": "1.0",
-    
-    "action": {
-      "default_popup": "GPT.html",
-      "default_icon": "images/duck.png"
-    },
-
-    "content_scripts": [
-        {
-          "js": ["scripts/content.js"],
-          "matches": [
-            "https://developer.chrome.com/docs/extensions/*",
-            "https://developer.chrome.com/docs/webstore/*"
-          ]
-        }
-      ]
-    
+  "manifest_version": 3,
+  "name": "Medication Diagnosis TLDR",
+  "description": "This an extension for abstracting information allowing for easier classification of severity and treatment",
+  "version": "1.0",
+  "type": "module",
+  "action": {
+    "default_popup": "GPT.html",
+    "default_icon": "images/duck.png"
   }
+
   
+}
