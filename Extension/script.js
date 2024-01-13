@@ -1,35 +1,37 @@
 document.addEventListener("DOMContentLoaded", function () {
-    var dropdownButton = document.getElementById("dropdownButton");
-    var dropdownContent = document.getElementById("myDropdownContent");
+    var treatmentButton = document.getElementById("treatment_button"); //copy lines 2-13 for every dropdown menu
+    var treatmentContent = document.getElementById("treatment_content");
 
-    dropdownButton.addEventListener("click", toggleDropdown);
+    treatmentButton.addEventListener("click", function(){
+        toggleDropdown("treatment")
+    });
     
-    dropdownContent.addEventListener("click", function (event) {
+    treatmentContent.addEventListener("click", function (event) {
         if (event.target.tagName === "A") {
-            selectOption(event.target.dataset.option);
+            selectOptionTreatment(event.target.dataset.option); //make a new function for each drop down menu
         }
     });
 
     // Close the dropdown if the user clicks outside of it
     window.addEventListener("click", function (event) {
         if (!event.target.matches('.dropbtn')) {
-            var dropdown = document.getElementById("myDropdown");
-            dropdown.classList.remove("open");
+            var treatmentDropdown = document.getElementById("treatment"); //make a list of all dropdowns here and close all of them
+            treatmentDropdown.classList.remove("open"); //call the remove function for every single dropdown variable
         }
     });
 });
-function toggleDropdown() {
-    var dropdown = document.getElementById("myDropdown");
+function toggleDropdown(id) {
+    var dropdown = document.getElementById(id);
     dropdown.classList.toggle("open");
 
-    var dropdownContent = document.getElementById("myDropdownContent");
+    var dropdownContent = document.getElementById(id + "_content");
     dropdownContent.style.width = dropdown.offsetWidth + "px";
 }
 
-function selectOption(option) {
-    var dropdownButton = document.getElementById("dropdownButton");
+function selectOptionTreatment(option) {
+    var dropdownButton = document.getElementById("treatment_button"); //make sure id matches drop down menu
     dropdownButton.innerText = option;
-    toggleDropdown(); // Close the dropdown after selecting an option
+    toggleDropdown("treatment"); // Close the dropdown after selecting an option
 
     switch (option) {
         case 'initial':
