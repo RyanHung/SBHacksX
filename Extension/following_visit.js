@@ -12,11 +12,27 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    var symptomsButton = document.getElementById("symptoms_button");
+    var symptomsContent = document.getElementById("symptoms_content");
+
+    symptomsButton.addEventListener("click", function(){
+        toggleDropdown("symptoms")
+    });
+    
+    symptomsContent.addEventListener("click", function (event) {
+        if (event.target.tagName === "A") {
+            selectOptionSymptoms(event.target.dataset.option);
+        }
+    });
+
+
     // Close the dropdown if the user clicks outside of it
     window.addEventListener("click", function (event) {
         if (!event.target.matches('.dropbtn')) {
             var ageDropdown = document.getElementById("age"); //make a list of all dropdowns here and close all of them
+            var symptomsDropdown = document.getElementById("symptoms");
             ageDropdown.classList.remove("open"); //call the remove function for every single dropdown variable
+            symptomsDropdown.classList.remove("open");
         }
     });
 
@@ -54,6 +70,27 @@ function selectOptionAge(option) {
             break;
         case '12+ Years':
             age = '12+';
+            break;
+    }
+
+}
+
+var symptoms_weight;
+
+function selectOptionSymptoms(option) {
+    var dropdownButton = document.getElementById("symptoms_button"); //make sure id matches drop down menu
+    dropdownButton.innerText = option;
+    toggleDropdown("symptoms"); // Close the dropdown after selecting an option
+
+    switch (option) {
+        case '<= 2 days per week':
+            symptoms_weight = 0;
+            break;
+        case "> 2 days per week":
+            symptoms_weight = 1;
+            break;
+        case "Throughout the day":
+            symptoms_weight = 2;
             break;
     }
 
