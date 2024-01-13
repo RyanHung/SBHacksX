@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Medication Diagnosis TLDR",
-    "description": "This an extension for abstracting information and prsenting it in a digestible manner for the patient.",
+    "description": "This an extension for abstracting information allowing for easier classification of severity and treatment",
     "version": "1.0",
     
     "action": {
