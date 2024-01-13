@@ -31,3 +31,15 @@ function selectOption(option) {
     dropdownButton.innerText = option;
     toggleDropdown(); // Close the dropdown after selecting an option
 }
+
+// Inject the payload.js script into the current tab after the popout has loaded
+window.addEventListener('load', function (evt) {
+	chrome.extension.getBackgroundPage().chrome.scripting.executeScript()(null, {
+		file: 'scripts/payload.js'
+	});;
+});
+
+// Listen to messages from the payload.js script and write to popout.html
+chrome.runtime.onMessage.addListener(function (message) {
+	document.getElementById('pagetitle').innerHTML = message;
+});
