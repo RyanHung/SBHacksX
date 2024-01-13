@@ -52,6 +52,10 @@ function selectOption(option) {
 
 }
 
+function askChatGPT() {
+    //GPT stuff goes here
+  }
+
 // Inject the payload.js script into the current tab after the popout has loaded
 window.addEventListener('load', function (evt) {
 	chrome.extension.getBackgroundPage().chrome.scripting.executeScript()(null, {
