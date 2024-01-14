@@ -89,6 +89,7 @@ function selectOptionAge(option) {
             age = '12+';
             break;
     }
+    agemodify();
 
 }
 
@@ -115,3 +116,30 @@ function selectOptionSymptoms(option) {
     }
 
 }
+
+function agemodify()
+{
+    var symptoms_dropdown_button = document.getElementById("symptoms_button");
+    var symptoms_dropdown_content = document.getElementById("symptoms_content")
+
+    if(age == '0-4')
+    {
+        symptoms_dropdown_button.innerHTML = 'Select an Option';
+        symptoms_dropdown_content.innerHTML = '<a href="#" data-option="<= 2 days per week"><= 2 days per week</a> <a href="#" data-option="> 2 days per week"> > 2 days per week</a><a href="#" data-option="Throughout the day">Throughout the day</a><a href="#" data-option="Not applicable">Not applicable</a>';
+    }
+    else if(age == '5-11')
+    {
+        symptoms_dropdown_button.innerHTML = 'Select an Option';
+        symptoms_dropdown_content.innerHTML = '<a href="#" data-option="<= 2 days per week but not more than once on each day"><= 2 days per week but not more than once on each day</a> <a href="#" data-option="> 2 days per week or multiple times on <= 2 days per week">> 2 days per week or multiple times on <= 2 days per week</a><a href="#" data-option="Throughout the day">Throughout the day</a><a href="#" data-option="Not applicable">Not applicable</a>';
+    }
+    else if(age == '12+')
+    {
+        symptoms_dropdown_button.innerHTML = 'Select an Option';
+        symptoms_dropdown_content.innerHTML = '<a href="#" data-option="<= 2 days per week"><= 2 days per week</a> <a href="#" data-option="> 2 days per week"> > 2 days per week</a><a href="#" data-option="Throughout the day">Throughout the day</a><a href="#" data-option="Not applicable">Not applicable</a>';
+    }
+}
+
+/*                 <a href="#" data-option="&lt;= 2 days per week">&lt;= 2 days per week</a>
+                <a href="#" data-option="> 2 days per week">> 2 days per week</a>
+                <a href="#" data-option="Daily">Daily</a>
+                <a href="#" data-option="Throughout the day">Throughout the day</a> */
