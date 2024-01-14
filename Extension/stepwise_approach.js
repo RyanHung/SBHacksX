@@ -16,9 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var stepsButton = document.getElementById("steps_button");
     var stepsContent = document.getElementById("steps_content");
 
-    symptomsButton.addEventListener("click", function(){
-        event.preventDefault();
     stepsButton.addEventListener("click", function(){
+        event.preventDefault();
         toggleDropdown("steps")
     });
     
@@ -153,7 +152,7 @@ function selectOptionSteps(option) {
         if (age == "0-4") {
             switch (option) {
                 case 'Step 1':
-                    outputElement.innerText = "Output for Step 1 (Age 0-4)";
+                    outputElement.innerHTML = "Output for Step 1 (Age 0-4)";
                     break;
                 case 'Step 2':
                     outputElement.innerText = "Output for Step 2 (Age 0-4)";
