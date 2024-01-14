@@ -123,5 +123,7 @@ h2 {
 text{
     text-align: center;
     font-size:16px;
-    padding:10px;
+    padding-left:20px;
+    padding-right:30px;
+    line-height:1.5;
 }

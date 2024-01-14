@@ -310,8 +310,13 @@ function agemodify()
 
 }
 
-var weight = 0;
-var weightcount = 0;
+var symptomSeverity = -1;
+var awakeningsSeverity = -1;
+var interferenceSeverity = -1;
+var sabaSeverity = -1;
+var lungSeverity = -1;
+var questionnaireSeverity = -1;
+var exacerbationsSeverity = -1;
 
 function selectOptionSymptoms(option) {
     var dropdownButton = document.getElementById("symptoms_button"); //make sure id matches drop down menu
@@ -322,40 +327,38 @@ function selectOptionSymptoms(option) {
         case '<= 2 days per week':
             if(age == '0-4' || age == '12+')
             {
-                weightcount += 1;
+                symptomSeverity = 0;
             }
             break;
         case '< 2 days per week':
             if(age == '0-4' || age == '12+')
             {
-                weight += 1;
-                weightcount += 1;
+                symptomSeverity = 1;
             }
             break;
         case '<= 2 days per week but not more than once on each day':
             if(age == '5-11')
             {
-                weightcount += 1;
+                symptomSeverity = 0;
             }
             break;
         case '> 2 days per week or multiple times on <= 2 days per week':
             if(age == '5-11')
             {
-                weight += 1;
-                weightcount += 1;
+                symptomSeverity = 1;
             }
             break;
         case '<= 2 days per week':
             if(age == '12+')
             {
-                weightcount += 1;
+                symptomSeverity = 1;
             }
             break;
         case "Throughout the day":
-            weight += 2;
-            weightcount += 1;
+            symptomSeverity = 2;
             break;
         case "Not Applicable":
+            symptomSeverity = -1;
             break;
     }
 
@@ -370,58 +373,53 @@ function selectOptionAwakenings(option) {
         case '<= 1x per month':
             if(age == '0-4' || age == '5-11')
             {
-                weightcount += 1;
+                awakeningsSeverity = 0;
             }
             break;
         case '> 1x per month':
             if(age == '0-4')
             {
-                weight += 1;
-                weightcount += 1;
+                awakeningsSeverity = 1;
             }
             break;
         case '> 1x per week':
             if(age == '0-4')
             {
-                weight += 2;
-                weightcount += 1;
+                awakeningsSeverity = 2;
             }
             break;
         case '>= 2x per month':
             if(age == '5-11')
             {
-                weight += 1;
-                weightcount += 1;
+                awakeningsSeverity = 1;
             }
             break;
         case '>= 2x per week':
             if(age == '5-11')
             {
-                weight += 2;
-                weightcount += 1;
+                awakeningsSeverity = 2;
             }
             break;
         case '<= 2x per month':
             if(age == '12+')
             {
-                weightcount += 1;
+                awakeningsSeverity = 0;
             }
             break;
         case '1 - 3x per week':
             if(age == '12+')
             {
-                weight += 1;
-                weightcount += 1;
+                awakeningsSeverity = 1;
             }
             break;
         case '>= 4x per week':
             if(age == '12+')
             {
-                weight += 2;
-                weightcount += 1;
+                awakeningsSeverity = 2;
             }
             break;
         case "Not Applicable":
+            awakeningsSeverity = -1;
             break;
     }
 
@@ -434,17 +432,16 @@ function selectOptionInterference(option) {
 
     switch (option) {
         case 'None':
-            weightcount += 1;
+            interferenceSeverity = 0;
             break;
         case 'Some limitation':
-            weight += 1;
-            weightcount += 1;
+            interferenceSeverity = 1;
             break;
         case 'Extremely limited':
-            weight += 2;
-            weightcount += 1;
+            interferenceSeverity = 2;
             break;
         case "Not Applicable":
+            interferenceSeverity = -1;
             break;
     }
 
@@ -457,17 +454,16 @@ function selectOptionSaba(option) {
 
     switch (option) {
         case '<= 2 days per week':
-            weightcount += 1;
+            sabaSeverity = 0;
             break;
         case '> 2 days per week':
-            weight += 1;
-            weightcount += 1;
+            sabaSeverity = 1;
             break;
         case 'Several times per day':
-            weight += 2;
-            weightcount += 1;
+            sabaSeverity = 2;
             break;
         case "Not Applicable":
+            sabaSeverity = -1;
             break;
     }
 
@@ -482,47 +478,44 @@ function selectOptionLung(option) {
         case 'FEV1 > 80%, FVC > 80%':
             if(age == '5-11')
             {
-                weightcount += 1;
+                lungSeverity = 0;
             }
             break;
         case 'FEV1 = 60 - 80%, FVC = 75 - 80%':
             if(age == '5-11')
             {
-                weight += 1;
-                weightcount += 1;
+                lungSeverity = 1;
             }
             break;
         case 'FEV1 < 60%, FVC < 75%':
             if(age == '5-11')
             {
-                weight += 2;
-                weightcount += 1;
+                lungSeverity = 2;
             }
             break;
         case 'FEV1 > 80%':
             if(age == '12+')
             {
-                weightcount += 1;
+                lungSeverity = 0;
             }
             break;
 
         case 'FEV1 = 60 - 80%':
             if(age == '12+')
             {
-                weight += 1;
-                weightcount += 1;
+                lungSeverity = 1;
             }
             break;
 
         case 'FEV1 < 60%':
             if(age == '12+')
             {
-                weight += 2;
-                weightcount += 1;
+                lungSeverity = 2;
             }
             break;
 
         case 'Not applicable':
+            lungSeverity = -1;
             break;
     }
 
@@ -537,24 +530,23 @@ function selectOptionQuestionnaire(option) {
         case 'ATAQ = 0, ACQ <= 0.75, ACT >= 20':
             if(age == '12+')
             {
-                weightcount += 1;
+                questionnaireSeverity = 0;
             }
             break;
         case 'ATAQ = 1 - 2, ACQ >= 1.5, ACT = 16 - 19':
             if(age == '12+')
             {
-                weight += 1;
-                weightcount += 1;
+                questionnaireSeverity = 1;
             }
             break;
         case 'ATAQ = 3 - 4, ACT <= 15':
             if(age == '12+')
             {
-                weight += 2;
-                weightcount += 1;
+                questionnaireSeverity = 2;
             }
             break;
         case "Not Applicable":
+            questionnaireSeverity = -1;
             break;
     }
 
@@ -567,29 +559,27 @@ function selectOptionExacerbations(option) {
 
     switch (option) {
         case '0 - 1/year':
-            weightcount += 1;
+            exacerbationsSeverity = 0;
             break;
         case '2 - 3/year':
             if(age == '0-4')
             {
-                weight += 1;
-                weightcount += 1;
+                exacerbationsSeverity = 1;
             }
             break;
         case '> 3/year':
             if(age == '0-4')
             {
-                weight += 2;
-                weightcount += 1;
+                exacerbationsSeverity = 2;
             }
             break;
         case '>= 2/year':
             if(age =='5-11' || age == '12+')
             {
-                weight += 1.5,
-                weightcount += 1;
+                exacerbationsSeverity = 1.5;
             }
         case "Not Applicable":
+            exacerbationsSeverity = -1;
             break;
     }
 
@@ -599,40 +589,87 @@ function submit()
 {
     var message = "";
 
-    var severity = weight * 1.0 / weightcount;
+    var count = 0;
 
-    message += "The patient in question has a severity rating of " + severity + " on a scale from 0 to 2.";
-
-    if(severity <= 0.66)
+    var weight = 0;
+    if(symptomSeverity > -1)
     {
-        message += "Maintain current step. Regular follow-up every 1-6 months. Consider step down if well controlled for at least 3 months."
+        weight += symptomSeverity;
+        count += 1;
     }
-    else if(severity <= 1.333)
+    if(awakeningsSeverity > -1)
     {
-        if(age == '0-4')
+        weight += awakeningsSeverity;
+        count += 1;
+    }
+    if(interferenceSeverity > -1)
+    {
+        weight += interferenceSeverity;
+        count += 1;
+    }
+    if(sabaSeverity > -1)
+    {
+        weight += sabaSeverity;
+        count += 1;
+    }
+    if(lungSeverity > -1)
+    {
+        weight += lungSeverity;
+        count += 1;
+    }
+    if(questionnaireSeverity > -1)
+    {
+        weight += questionnaireSeverity;
+        count += 1;
+    }
+    if(exacerbationsSeverity > -1)
+    {
+        weight += exacerbationsSeverity;
+        count += 1;
+    }
+
+    severity = weight * 1.0 / count;
+
+    message += "The patient in question has a severity rating of " + severity * 5 + " on a scale from 0 to 10. ";
+
+    if(count > 0)
+    {
+
+        if(severity <= 3.33)
         {
-            message += "Step up 1 step.";
+            message += "Maintain current step. Regular follow-up every 1-6 months. Consider step down if well controlled for at least 3 months. "
         }
-        else if(age == '5-11')
+        else if(severity <= 6.66)
         {
-            message += "Step up at least 1 step.";
+            if(age == '0-4')
+            {
+                message += "Step up 1 step. ";
+            }
+            else if(age == '5-11')
+            {
+                message += "Step up at least 1 step. ";
+            }
+            else if(age == '12+')
+            {
+                message += "Step up 1 step. ";
+            }
+
+            message += "Reevaluate in 2 - 6 weeks to achieve control. For children 0 - 4 years, if no clear benefit observed in 4 - 6 weeks, consider adjusting therapy or alternative diagnoses. ";
+
         }
-        else if(age == '12+')
+        else
         {
-            message += "Step up 1 step.";
+            message += "Consider short course of oral cortisteroids. Step up 1 - 2 steps. Reevaluate in 2 weeks to achieve control. ";
         }
 
-        message += "Reevaluate in 2 - 6 weeks to achieve control. For children 0 - 4 years, if no clear benefit observed in 4 - 6 weeks, consider adjusting therapy or alternative diagnoses.";
-
+        if(severity > 0.66)
+        {
+            message += "Before step up in treatment, review adherence to medication, inhaler technique, and environmental control. If alternative treatment was used, discontinue and use preferred treatment for that step. For side effects, consider alternative treatment options. ";
+        }
     }
     else
     {
-        message += "Consider short course of oral cortisteroids. Step up 1 - 2 steps. Reevaluate in 2 weeks to achieve control.";
-    }
-
-    if(severity > 0.66)
-    {
-        message += "Before step up in treatment, review adherence to medication, inhaler technique, and environmental control. If alternative treatment was used, discontinue and use preferred treatment for that step. For side effects, consider alternative treatment options.";
+        message = "Not enough information. Please provide at least one point of context."
     }
 
     var text = document.getElementById("output-message");
