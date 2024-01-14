@@ -155,81 +155,81 @@ function outputTreatment(option) {
     if (age == "0-4") {
         switch (option) {
             case 'Step 1':
-                preferredTreatment.innerText = "SABA as Needed";
+                preferredTreatment.innerText = "Preferred Treatment: SABA as Needed";
                 alternativeTreatment.innerText = "";
                 break;
             case 'Step 2':
-                preferredTreatment.innerText = "Low-Dose ICS";
-                alternativeTreatment.innerText = "Cromolyn or Montelukast";
+                preferredTreatment.innerText = "Preferred Treatment: Low-Dose ICS";
+                alternativeTreatment.innerText = "Alternative Treatment: Cromolyn or Montelukast";
                 break;
             case 'Step 3':
-                preferredTreatment.innerText = "Medium-Dose ICS";
+                preferredTreatment.innerText = "Preferred Treatment: Medium-Dose ICS";
                 alternativeTreatment.innerText = "";
                 break;
             case 'Step 4':
-                preferredTreatment.innerText = "Medium-Dose ICS + Either LABA or Montelukast";
+                preferredTreatment.innerText = "Preferred Treatment: Medium-Dose ICS + Either LABA or Montelukast";
                 alternativeTreatment.innerText = "";
                 break;
             case 'Step 5':
-                preferredTreatment.innerText = "High-dose ICS + Either LABA or Montelukast";
+                preferredTreatment.innerText = "Preferred Treatment: High-dose ICS + Either LABA or Montelukast";
                 alternativeTreatment.innerText = "";
                 break;
             case 'Step 6':
-                preferredTreatment.innerText = "High-Dose ICS + Either LABA or MonteLukast + Oral Corticosteroids";
+                preferredTreatment.innerText = "Preferred Treatment: High-Dose ICS + Either LABA or MonteLukast + Oral Corticosteroids";
                 alternativeTreatment.innerText = "";
                 break;
         }
     } else if (age == "5-11") {
         switch (option) {
             case 'Step 1':
-                preferredTreatment.innerText = "SABA As Needed";
+                preferredTreatment.innerText = "Preferred Treatment: SABA As Needed";
                 alternativeTreatment.innerText = "";
                 break;
             case 'Step 2':
-                preferredTreatment.innerText = "Low Dose ICS";
-                alternativeTreatment.innerText = "Cromolyn, LTRA, or Theophylline";
+                preferredTreatment.innerText = "Preferred Treatment: Low Dose ICS";
+                alternativeTreatment.innerText = "Alternative Treatment: Cromolyn, LTRA, or Theophylline";
                 break;
             case 'Step 3':
-                preferredTreatment.innerText = "Low Dose ICS + Either LABA, LTRA or Theophylline OR Medium-Dose ICS";
+                preferredTreatment.innerText = "Preferred Treatment: Low Dose ICS + Either LABA, LTRA or Theophylline or Medium-Dose ICS";
                 alternativeTreatment.innerText = "";
                 break;
             case 'Step 4':
-                preferredTreatment.innerText = "Medium Dose ICS + LABA";
-                alternativeTreatment.innerText = "Medium Dose ICS + Either LTRA or Theophylline";
+                preferredTreatment.innerText = "Preferred Treatment: Medium Dose ICS + LABA";
+                alternativeTreatment.innerText = "Alternative Treatment: Medium Dose ICS + Either LTRA or Theophylline";
                 break;
             case 'Step 5':
-                preferredTreatment.innerText = "High-Dose ICS + LABA";
-                alternativeTreatment.innerText = "High-Dose ICS + either LTRA or Theophylline";
+                preferredTreatment.innerText = "Preferred Treatment: High-Dose ICS + LABA";
+                alternativeTreatment.innerText = "Alternative Treatment: High-Dose ICS + Either LTRA or Theophylline";
                 break;
             case 'Step 6':
-                preferredTreatment.innerText = "High-Dose ICS + LABA + Oral Corticosteroids";
-                alternativeTreatment.innerText = "High-Dose ICS + Either LTRA or Theophylline + Oral Corticosteroids";
+                preferredTreatment.innerText = "Preferred Treatment: High-Dose ICS + LABA + Oral Corticosteroids";
+                alternativeTreatment.innerText = "Alternative Treatment: High-Dose ICS + Either LTRA or Theophylline + Oral Corticosteroids";
                 break;
         }
     } else if (age == "12+ years") {
         switch (option) {
             case 'Step 1':
-                preferredTreatment.innerText = "SABA as needed";
+                preferredTreatment.innerText = "Preferred Treatment: SABA as needed";
                 alternativeTreatment.innerText = "";
                 break;
             case 'Step 2':
-                preferredTreatment.innerText = "Low-Dose ICS";
-                alternativeTreatment.innerText = "Cromolyn, LTRA, or Theophylline";
+                preferredTreatment.innerText = "Preferred Treatment: Low-Dose ICS";
+                alternativeTreatment.innerText = "Alternative Treatment: Cromolyn, LTRA, or Theophylline";
                 break;
             case 'Step 3':
-                preferredTreatment.innerText = "Low-Dose ICS + LABA or Medium-Dose ICS";
-                alternativeTreatment.innerText = "Low-Dose ICS + Either LTRA, theophylline, or Zileuton";
+                preferredTreatment.innerText = "Preferred Treatment: Low-Dose ICS + LABA or Medium-Dose ICS";
+                alternativeTreatment.innerText = "Alternative Treatment: Low-Dose ICS + Either LTRA, theophylline, or Zileuton";
                 break;
             case 'Step 4':
-                preferredTreatment.innerText = "Medium-Dose ICS + LABA";
-                alternativeTreatment.innerText = "Medium-Dose ICS + Either LTRA, Theophylline, or Zileuton";
+                preferredTreatment.innerText = "Preferred Treatment: Medium-Dose ICS + LABA";
+                alternativeTreatment.innerText = "Alternative Treatment: Medium-Dose ICS + Either LTRA, Theophylline, or Zileuton";
                 break;
             case 'Step 5':
-                preferredTreatment.innerText = "High-Dose ICS + LABA and Consider Omalizumab for Patients who have Allergies";
+                preferredTreatment.innerText = "Preferred Treatment: High-Dose ICS + LABA and Consider Omalizumab for Patients who have Allergies";
                 alternativeTreatment.innerText = "";
                 break;
             case 'Step 6':
-                preferredTreatment.innerText = "High-Dose ICS + LABA + Oral Corticosteroid and Consider Omalizumab for Patients who have Allergies";
+                preferredTreatment.innerText = "Preferred Treatment: High-Dose ICS + LABA + Oral Corticosteroid and Consider Omalizumab for Patients who have Allergies";
                 alternativeTreatment.innerText = "";
                 break;
         }
