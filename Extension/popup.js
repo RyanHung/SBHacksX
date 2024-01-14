@@ -1,3 +1,13 @@
+var goBackButton = document.getElementById('goBackButton');
+    
+    if (goBackButton) {
+        goBackButton.addEventListener('click', goBack);
+    }
+
+    function goBack() {
+        window.history.back();
+    }
+
 const promptInput = document.getElementById("prompt");
 const submitButton = document.getElementById("submit");
 const responseDiv = document.getElementById("response");
@@ -12,7 +22,7 @@ submitButton.addEventListener("click", async () => {
       headers: {
         "Content-Type": "application/json",
         // Include your OpenAI API key here
-        "Authorization": "Bearer PUT_YOUR_KEY_HERE"
+        "Authorization": "Bearer "
       },
       body: JSON.stringify({
         model: "gpt-3.5-turbo",
