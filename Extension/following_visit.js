@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     ageContent.addEventListener("click", function (event) {
         if (event.target.tagName === "A") {
+            event.preventDefault();
             selectOptionAge(event.target.dataset.option); //make a new function for each drop down menu
         }
     });
@@ -21,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     symptomsContent.addEventListener("click", function (event) {
         if (event.target.tagName === "A") {
+            event.preventDefault();
             selectOptionSymptoms(event.target.dataset.option);
         }
     });
@@ -34,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     awakeningsContent.addEventListener("click", function (event) {
         if (event.target.tagName === "A") {
+            event.preventDefault();
             selectOptionAwakenings(event.target.dataset.option);
         }
     });
@@ -47,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     interferenceContent.addEventListener("click", function (event) {
         if (event.target.tagName === "A") {
+            event.preventDefault();
             selectOptionInterference(event.target.dataset.option);
         }
     });
@@ -60,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     sabaContent.addEventListener("click", function (event) {
         if (event.target.tagName === "A") {
+            event.preventDefault();
             selectOptionSaba(event.target.dataset.option);
         }
     });
@@ -73,6 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     lungContent.addEventListener("click", function (event) {
         if (event.target.tagName === "A") {
+            event.preventDefault();
             selectOptionLung(event.target.dataset.option);
         }
     });
@@ -86,6 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     questionnaireContent.addEventListener("click", function (event) {
         if (event.target.tagName === "A") {
+            event.preventDefault();
             selectOptionQuestionnaire(event.target.dataset.option);
         }
     });
@@ -99,6 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     exacerbationsContent.addEventListener("click", function (event) {
         if (event.target.tagName === "A") {
+            event.preventDefault();
             selectOptionExacerbations(event.target.dataset.option);
         }
     });
@@ -134,6 +142,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function goBack() {
         window.history.back();
+    }
+
+    var submitButton = document.getElementById('submitButton');
+    
+    if (submitButton) {
+        submitButton.addEventListener('click', submit);
     }
 });
 
@@ -579,4 +593,48 @@ function selectOptionExacerbations(option) {
             break;
     }
 
+}
+
+function submit()
+{
+    var message = "";
+
+    var severity = weight * 1.0 / weightcount;
+
+    message += "The patient in question has a severity rating of " + severity + " on a scale from 0 to 2.";
+
+    if(severity <= 0.66)
+    {
+        message += "Maintain current step. Regular follow-up every 1-6 months. Consider step down if well controlled for at least 3 months."
+    }
+    else if(severity <= 1.333)
+    {
+        if(age == '0-4')
+        {
+            message += "Step up 1 step.";
+        }
+        else if(age == '5-11')
+        {
+            message += "Step up at least 1 step.";
+        }
+        else if(age == '12+')
+        {
+            message += "Step up 1 step.";
+        }
+
+        message += "Reevaluate in 2 - 6 weeks to achieve control. For children 0 - 4 years, if no clear benefit observed in 4 - 6 weeks, consider adjusting therapy or alternative diagnoses.";
+
+    }
+    else
+    {
+        message += "Consider short course of oral cortisteroids. Step up 1 - 2 steps. Reevaluate in 2 weeks to achieve control.";
+    }
+
+    if(severity > 0.66)
+    {
+        message += "Before step up in treatment, review adherence to medication, inhaler technique, and environmental control. If alternative treatment was used, discontinue and use preferred treatment for that step. For side effects, consider alternative treatment options.";
+    }
+
+    var text = document.getElementById("output-message");
+    text.innerHTML = message;
 }
