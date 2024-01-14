@@ -1,22 +1,26 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Get the trigger element by its class
-    var tooltipTrigger = document.querySelector(".tooltip-trigger");
+    // Get all elements with the class 'tooltip-trigger'
+    var tooltipTriggers = document.querySelectorAll(".tooltip-trigger");
 
-    // Get the tooltip element by its id
-    var tooltip = document.getElementById("tooltip");
+    // Iterate through each tooltip trigger element
+    tooltipTriggers.forEach(function (trigger) {
+        // Get the corresponding tooltip element by its ID
+        var tooltipId = trigger.getAttribute("data-tooltip-id");
+        var tooltip = document.getElementById(tooltipId);
 
-    // Add event listeners for mouseover and mouseout to the trigger element
-    tooltipTrigger.addEventListener("mouseover", function () {
-        // Set the tooltip content based on the data-tooltip attribute
-        var tooltipContent = tooltipTrigger.getAttribute("data-tooltip");
-        tooltip.textContent = tooltipContent;
+        // Add event listeners for mouseover and mouseout to the trigger element
+        trigger.addEventListener("mouseover", function () {
+            // Set the tooltip content based on the data-tooltip attribute
+            var tooltipContent = trigger.getAttribute("data-tooltip");
+            tooltip.textContent = tooltipContent;
 
-        // Show the tooltip
-        tooltip.style.display = "block";
-    });
+            // Show the tooltip
+            tooltip.style.display = "block";
+        });
 
-    tooltipTrigger.addEventListener("mouseout", function () {
-        // Hide the tooltip on mouseout
-        tooltip.style.display = "none";
+        trigger.addEventListener("mouseout", function () {
+            // Hide the tooltip on mouseout
+            tooltip.style.display = "none";
+        });
     });
 });

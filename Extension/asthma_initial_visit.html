@@ -9,7 +9,11 @@
 <body>
 
 <div class = "content-container">
-    <h1>Initial Visits: Determining Asthma Severity</h1>
+    <h1>
+        <span class="main-text">Initial Visits: Determining Asthma Severity</span>
+        <span class="tooltip-trigger" data-tooltip-id="tooltip_initial" data-tooltip="For in patients not currently taking long term medication">*</span>
+        <div id="tooltip_initial" class="tooltip"></div>
+    </h1>
     <button id="goBackButton">Go Back</button>
     <div class="container">
         <div class="dropdown" id="age">
@@ -53,6 +57,7 @@
 </div>
 
 <script src="initial_visit.js"></script>
+<script src="hover_tooltip.js"></script>
 </body>
 </html>
 
