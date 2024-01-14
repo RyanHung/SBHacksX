@@ -67,6 +67,9 @@ function selectOptionTreatment(option) {
             // Redirect to dosages
             window.location.href = 'asthma_daily_dosage.html';
             break;
+        case 'gpt':
+            window.location.href = 'asthma_gpt.html';
+            break;
     }
 
 }
