@@ -259,8 +259,6 @@ var awakeningsSeverity = -1;
 var interferenceSeverity = -1;
 var sabaSeverity = -1;
 var lungSeverity = -1;
-var questionnaireSeverity = -1;
-var exacerbationsSeverity = -1;
 
 function selectOptionSymptoms(option) {
     var dropdownButton = document.getElementById("symptoms_button"); //make sure id matches drop down menu
@@ -461,16 +459,6 @@ function submit()
         weight += lungSeverity;
         count += 1;
     }
-    if(questionnaireSeverity > -1)
-    {
-        weight += questionnaireSeverity;
-        count += 1;
-    }
-    if(exacerbationsSeverity > -1)
-    {
-        weight += exacerbationsSeverity;
-        count += 1;
-    }
 
     severity = weight * 1.0 / count;
 
@@ -479,37 +467,45 @@ function submit()
     if(count > 0)
     {
 
-        if(severity <= 3.33)
+        if(severity <= 2.5)
         {
-            message += "Maintain current step. Regular follow-up every 1-6 months. Consider step down if well controlled for at least 3 months. "
+            message += "Step 1 is recommended. ";
         }
-        else if(severity <= 6.66)
+        else if(severity <= 5)
         {
-            if(age == '0-4')
+            message += "Step 2 is recommended. ";
+
+        }
+        else if(severity <= 7.5)
+        {
+            if(age == '0-4' || age == '12+')
             {
-                message += "Step up 1 step. ";
+                message += "Step 3 is recommended. ";
             }
             else if(age == '5-11')
             {
-                message += "Step up at least 1 step. ";
-            }
-            else if(age == '12+')
-            {
-                message += "Step up 1 step. ";
+                message += "Step 3(Medium Dose ICS Option) is recommended. ";
             }
 
-            message += "Reevaluate in 2 - 6 weeks to achieve control. For children 0 - 4 years, if no clear benefit observed in 4 - 6 weeks, consider adjusting therapy or alternative diagnoses. ";
-
+            message += "Consider a short course of oral systemic corticosteoroids. ";
         }
         else
         {
-            message += "Consider short course of oral cortisteroids. Step up 1 - 2 steps. Reevaluate in 2 weeks to achieve control. ";
+            if(age == '0-4')
+            {
+                message += "Step 3 is recommended. ";
+            }
+            else if(age == '5-11')
+            {
+                message += "Step 3(Medium-Dose ICS option) or Step 4 is recommended. ";
+            }
+            else if(age == '12+')
+            {
+                message += "Step 4 or 5 is recommended. ";
+            }
         }
 
-        if(severity > 0.66)
-        {
-            message += "Before step up in treatment, review adherence to medication, inhaler technique, and environmental control. If alternative treatment was used, discontinue and use preferred treatment for that step. For side effects, consider alternative treatment options. ";
-        }
+        message += "In 2 – 6 weeks, depending on severity, assess level of asthma control achieved and adjust therapy as needed. For children 0 – 4 years old, if no clear benefit is observed in 4 – 6 weeks, consider adjusting therapy or alternate diagnoses.";
     }
     else
     {
