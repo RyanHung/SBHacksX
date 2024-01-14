@@ -122,63 +122,67 @@ function selectOptionDrug(option) {
     dropdownButton.innerText = option;
     toggleDropdown("drug"); // Close the dropdown after selecting an option
 
-    lowmessage = "";
-    medmessage = "";
-    highmessage = "";
+    var lowmessage = document.getElementById("lowDose");
+    var medmessage = document.getElementById("medDose");
+    var highmessage = document.getElementById("highDose");
+
+    lowmessage.innerText = "";
+    medmessage.innerText = "";
+    highmessage.innerText = "";
 
     switch (option) {
         case "Beclomethasone MDI":
             if(age == '5-11')
             {
-                lowmessage += "Low: 80 - 160 mcg(1 - 2 40 mcg puffs 2x per day or 1 80 mcg puff 2x per day).";
-                medmessage += "Med: > 160 - 320 mcg(3 - 4 40 mcg puffs 2x per day or 2 80 mcg puffs 2x per day).";
-                highmessage += "High: > 320 mcg(>= 3 80 mcg puffs 2x per day.";
+                lowmessage.innerText =  "Low: 80 - 160 mcg(1 - 2 40 mcg puffs 2x per day or 1 80 mcg puff 2x per day).";
+                medmessage.innerText = "Med: > 160 - 320 mcg(3 - 4 40 mcg puffs 2x per day or 2 80 mcg puffs 2x per day).";
+                highmessage.innerText = "High: > 320 mcg(>= 3 80 mcg puffs 2x per day.";
             }
             else if(age == '12+')
             {
-                lowmessage += "Low: 80 - 240 mcg(1 - 3 40 mcg puffs 2x per day or 1 80 mcg puff in the am and 1 8p mcg puff in the pm).";
-                medmessage += "Med: > 240 - 480 mcg(4 - 6 40 mcg puffs 2x per day or 2 - 3 puffs 2x per day).";
-                highmessage += "High: > 480 mcg(>= 4 puffs 2x per day).";
+                lowmessage.innerText = "Low: 80 - 240 mcg(1 - 3 40 mcg puffs 2x per day or 1 80 mcg puff in the am and 1 8p mcg puff in the pm).";
+                medmessage.innerText = "Med: > 240 - 480 mcg(4 - 6 40 mcg puffs 2x per day or 2 - 3 puffs 2x per day).";
+                highmessage.innerText= "High: > 480 mcg(>= 4 puffs 2x per day).";
             }
             break;
         case "Budesonide DPI":
             if(age == '5-11')
             {
-                lowmessage += "Low: 180 - 360 mcg(1 - 2 90 mcg inhales 2x per day).";
-                medmessage += "Med: > 360 - 720 mcg(3 - 4 90 mcg inhales 2x per day or 2 180 mcg inhles 2x per day).";
-                highmessage += "High: > 720 mcg(>= 3 180 mcg inhales 2x per day).";
+                lowmessage.innerText = "Low: 180 - 360 mcg(1 - 2 90 mcg inhales 2x per day).";
+                medmessage.innerText= "Med: > 360 - 720 mcg(3 - 4 90 mcg inhales 2x per day or 2 180 mcg inhles 2x per day).";
+                highmessage.innerText = "High: > 720 mcg(>= 3 180 mcg inhales 2x per day).";
             }
             else if(age == '12+')
             {
-                lowmessage += "Low: 180 - 540 mcg(1 - 3 90 mcg inhales 2x per day or 1 180 mcg puff am and 2 180 mcg puffs pm).";
-                medmessage += "Med: > 540 - 1080 mcg(2 - 3 180 mcg inhales 2x per day).";
-                highmessage += "High: > 1080 mcg(>= 4 inhales 2x per day).";
+                lowmessage.innerText = "Low: 180 - 540 mcg(1 - 3 90 mcg inhales 2x per day or 1 180 mcg puff am and 2 180 mcg puffs pm).";
+                medmessage.innerText = "Med: > 540 - 1080 mcg(2 - 3 180 mcg inhales 2x per day).";
+                highmessage.innerText = "High: > 1080 mcg(>= 4 inhales 2x per day).";
             }
         case "Budesonide Nebules":
             if(age == '0-4')
             {
-                lowmessage += "Low: 0.25 - 0.5 mg(1 - 2 0.25 mg nebs per day or 1 0.5 mg neb per day).";
-                medmessage += "Med: > 0.5 - 1.0 mg(2 0.5 mg nebs per day or 1 1.0 mg neb per day).";
-                highmessage += "High: > 1.0 mg(3 0.5 mg nebs per day or 2 1.0 mg nebs per day).";
+                lowmessage.innerText = "Low: 0.25 - 0.5 mg(1 - 2 0.25 mg nebs per day or 1 0.5 mg neb per day).";
+                medmessage.innerText = "Med: > 0.5 - 1.0 mg(2 0.5 mg nebs per day or 1 1.0 mg neb per day).";
+                highmessage.innerText = "High: > 1.0 mg(3 0.5 mg nebs per day or 2 1.0 mg nebs per day).";
             }
             else if(age == '5-11')
             {
-                lowmessage += "Low: 0.5 mg(1 0.25 mg neb 2x per day or 1 0.5 mg neb per day).";
-                medmessage += "Med: 1.0 mg(1 0.5 mg neb 2x per day or 1 1.0 mg neb per day).";
-                highmessage += "High: 2.0 mg(1 1.0 mg neb 2x per day).";
+                lowmessage.innerText = "Low: 0.5 mg(1 0.25 mg neb 2x per day or 1 0.5 mg neb per day).";
+                medmessage.innerText = "Med: 1.0 mg(1 0.5 mg neb 2x per day or 1 1.0 mg neb per day).";
+                highmessage.innerText = "High: 2.0 mg(1 1.0 mg neb 2x per day).";
             }
         case "Ciclesonide MDI":
             if(age == '5-11')
             {
-                lowmessage += "Low: 80 - 160 mcg(1 - 2 80 mcg puffs per day or 1 160 mcg puff per day).";
-                medmessage += "Med: > 160 - 320 mcg(1 80 mcg puff am and 2 80 mcg puffs pm per day or 1 160 mcg puff 2x per day).";
-                highmessage += "High: > 320 mcg(>= 3 80 mcg puffs 2x per day or >= 2 160 mcg puffs 2x per day).";
+                lowmessage.innerText = "Low: 80 - 160 mcg(1 - 2 80 mcg puffs per day or 1 160 mcg puff per day).";
+                medmessage.innerText = "Med: > 160 - 320 mcg(1 80 mcg puff am and 2 80 mcg puffs pm per day or 1 160 mcg puff 2x per day).";
+                highmessage.innerText = "High: > 320 mcg(>= 3 80 mcg puffs 2x per day or >= 2 160 mcg puffs 2x per day).";
             }
             else if(age == '12+')
             {
-                lowmessage += "Low: 160 - 320 mcg(1 - 2 80 mcg puffs 2x per day).";
-                medmessage += "Med: > 320 - 640 mcg(3 - 4 80 mcg puffs 2x per day or 2 160 mcg puffs 2x per day).";
-                highmessage += "High: > 640 mcg(>= 3 160 mcg puffs 2x per day).";
+                lowmessage.innerText = "Low: 160 - 320 mcg(1 - 2 80 mcg puffs 2x per day).";
+                medmessage.innerText = "Med: > 320 - 640 mcg(3 - 4 80 mcg puffs 2x per day or 2 160 mcg puffs 2x per day).";
+                highmessage.innerText = "High: > 640 mcg(>= 3 160 mcg puffs 2x per day).";
             }
     }
 }
