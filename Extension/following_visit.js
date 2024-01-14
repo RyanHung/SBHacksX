@@ -38,6 +38,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    var interferenceButton = document.getElementById("interference_button");
+    var interferenceContent = document.getElementById("interference_content");
+
+    interferenceButton.addEventListener("click", function(){
+        toggleDropdown("interference");
+    });
+    
+    interferenceContent.addEventListener("click", function (event) {
+        if (event.target.tagName === "A") {
+            selectOptionInterference(event.target.dataset.option);
+        }
+    });
+
 
     // Close the dropdown if the user clicks outside of it
     window.addEventListener("click", function (event) {
@@ -45,9 +58,11 @@ document.addEventListener("DOMContentLoaded", function () {
             var ageDropdown = document.getElementById("age"); //make a list of all dropdowns here and close all of them
             var symptomsDropdown = document.getElementById("symptoms");
             var awakeningsDropdown = document.getElementById("awakenings");
+            var interferenceDropdown = document.getElementById("interference");
             ageDropdown.classList.remove("open"); //call the remove function for every single dropdown variable
             symptomsDropdown.classList.remove("open");
             awakeningsDropdown.classList.remove("open");
+            interferenceDropdown.classList.remove("open");
         }
     });
 
@@ -149,8 +164,11 @@ function agemodify()
         awakenings_dropdown_content.innerHTML = '<a href="#" data-option="<= 2x per month"><= 2x per month</a> <a href="#" data-option="1 - 3x per week">> 1 - 3x per week</a><a href="#" data-option=">= 4x per week"> >= 4x per week</a><a href="#" data-option="Not applicable">Not applicable</a>';
     }
 
-    var awakenings_dropdown_button = document.getElementById("awakenings_button");
-    var awakenings_dropdown_content = document.getElementById("awakenings_content")
+    var interference_dropdown_button = document.getElementById("interference_button");
+    var interference_dropdown_content = document.getElementById("interference_content")
+
+    interference_dropdown_button.innerHTML = 'Select an Option';
+    interference_dropdown_content.innerHTML = '<a href="#" data-option="None">None</a> <a href="#" data-option="Some limitation">Some limitation</a><a href="#" data-option="Extremely limited">Extremely limited</a><a href="#" data-option="Not applicable">Not applicable</a>';
 }
 
 var weight = 0;
@@ -263,6 +281,29 @@ function selectOptionAwakenings(option) {
                 weight += 2;
                 weightcount += 1;
             }
+            break;
+        case "Not Applicable":
+            break;
+    }
+
+}
+
+function selectOptionInterference(option) {
+    var dropdownButton = document.getElementById("interference_button"); //make sure id matches drop down menu
+    dropdownButton.innerText = option;
+    toggleDropdown("interference"); // Close the dropdown after selecting an option
+
+    switch (option) {
+        case 'None':
+            weightcount += 1;
+            break;
+        case 'Some limitation':
+            weight += 1;
+            weightcount += 1;
+            break;
+        case 'Extremely limited':
+            weight += 2;
+            weightcount += 1;
             break;
         case "Not Applicable":
             break;
