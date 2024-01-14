@@ -180,5 +180,16 @@ function selectOptionDrug(option) {
                 medmessage += "Med: > 320 - 640 mcg(3 - 4 80 mcg puffs 2x per day or 2 160 mcg puffs 2x per day).";
                 highmessage += "High: > 640 mcg(>= 3 160 mcg puffs 2x per day).";
             }
+        case "Flunisolide MDI":
+            if(age == '5-11')
+            {
+                lowmessage += "Low: 160 mcg(1 80 mcg puff 2x per day).";
+                medmessage += "Med: 320-480 mcg(2-3 puffs 2x/day).";
+                highmessage += "High: >= 480 mcg(>= 4 puffs 2x/day";
+            }
+            else if(age == '12+') 
+            {
+                
+            }
     }
 }
