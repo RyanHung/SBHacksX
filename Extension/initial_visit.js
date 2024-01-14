@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     ageButton.addEventListener("click", function(){
         toggleDropdown("age")
+        event.preventDefault();
     });
     
     ageContent.addEventListener("click", function (event) {
@@ -21,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     symptomsContent.addEventListener("click", function (event) {
         if (event.target.tagName === "A") {
+            event.preventDefault();
             selectOptionSymptoms(event.target.dataset.option);
         }
     });
@@ -34,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     awakeningsContent.addEventListener("click", function (event) {
         if (event.target.tagName === "A") {
+            event.preventDefault();
             selectOptionAwakenings(event.target.dataset.option);
         }
     });
@@ -47,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     interferenceContent.addEventListener("click", function (event) {
         if (event.target.tagName === "A") {
+            event.preventDefault();
             selectOptionInterference(event.target.dataset.option);
         }
     });
@@ -61,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     sabaContent.addEventListener("click", function (event) {
         if (event.target.tagName === "A") {
+            event.preventDefault();
             selectOptionSaba(event.target.dataset.option);
         }
     });

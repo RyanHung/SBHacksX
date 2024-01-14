@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     ageContent.addEventListener("click", function (event) {
         if (event.target.tagName === "A") {
+            event.preventDefault();
             selectOptionAge(event.target.dataset.option); //make a new function for each drop down menu
         }
     });
