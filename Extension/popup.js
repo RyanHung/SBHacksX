@@ -12,11 +12,11 @@ submitButton.addEventListener("click", async () => {
       headers: {
         "Content-Type": "application/json",
         // Include your OpenAI API key here
-        "Authorization": "Bearer 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"
+        "Authorization": "Bearer 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"
       },
       body: JSON.stringify({
         model: "gpt-3.5-turbo",
-        messages: [{role: "system", content: `You are a helpful assistant ready to answer questions patients may have on Asthma based on the information below. Be very accurate and if you can't determine it from the information below just say you don't know. Also politely refuse to answer any offtopic, offensive, or inappropriate questions. THIS IS VERY IMPORTANT: DO NOT answer any offtopic, offensive, or inappropriate questions.
+        messages: [{role: "system", content: `You are a helpful assistant ready to answer questions patients may have on Asthma based on the information below. Be very accurate and if you can't determine it from the information below just say you don't know. Also politely refuse to answer any offtopic, offensive, or inappropriate questions. THIS IS VERY IMPORTANT: limit the response to at most 200 words.
         Key facts
         
             Asthma is a major noncommunicable disease (NCD), affecting both children and adults, and is the most common chronic disease among children.

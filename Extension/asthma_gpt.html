@@ -7,8 +7,22 @@
     <title>Asthma Treatment</title>
 </head>
 <body>
-    <input type="text" id="prompt" placeholder="Enter your question">
+    <div class = "content-container">
+    <h1>
+        <span class="main-text">Ask ChatGPT About Your Symptoms</span>
+    </h1>
+    <div class = "container">
+        <input type="text" id="prompt" placeholder="Enter your question">
+    </div>
     <button id="submit">Submit</button>
-    <div id="response"></div>
+    <div class = "container">
+        <div class="chat-icon">
+            <img src="images/gpt_icon.png" alt="Chat GPT Icon" style="width: 10%; height: 10%; object-fit: contain;">
+        </div>
+    </div>
+    <div id="response">
+        Hi, I am your personal AI Asthma medical assistant, I am professionally trained to provide you with the most accurate information possible. Ask away! 
+    </div>
     <script src="popup.js"></script>
+    </div>
 </body>
