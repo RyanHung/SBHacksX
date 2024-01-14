@@ -46,11 +46,28 @@ document.addEventListener("DOMContentLoaded", function () {
         window.history.back();
     }
 });
+function closeAllDropdowns() {
+    var dropdowns = document.getElementsByClassName('dropdown-content');
+    for(var i = 0; i < dropdowns.length; i++)
+    {
+        dropdowns[i].style.display = 'none';   
+    }
+}
+
 function toggleDropdown(id) {
     var dropdown = document.getElementById(id);
-    dropdown.classList.toggle("open");
-
     var dropdownContent = document.getElementById(id + "_content");
+    if(dropdownContent.style.display == 'block')
+    {
+        closeAllDropdowns();
+    }
+    else
+    {
+        closeAllDropdowns();
+        dropdownContent.style.display = 'block';
+    }
+
+    
     dropdownContent.style.width = dropdown.offsetWidth + "px";
 }
 
@@ -74,6 +91,9 @@ function selectOptionAge(option) {
     }
 
 }
+
+
+
 
 var symptoms_weight;
 

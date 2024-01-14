@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var treatmentContent = document.getElementById("treatment_content");
 
     treatmentButton.addEventListener("click", function(){
-        toggleDropdown("treatment")
+        toggleDropdown("treatment");
     });
     
     treatmentContent.addEventListener("click", function (event) {
@@ -22,11 +22,28 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+function closeAllDropdowns() {
+    var dropdowns = document.getElementsByClassName('dropdown-content');
+    for(var i = 0; i < dropdowns.length; i++)
+    {
+        dropdowns[i].style.display = 'none';   
+    }
+}
+
 function toggleDropdown(id) {
     var dropdown = document.getElementById(id);
-    dropdown.classList.toggle("open");
-
     var dropdownContent = document.getElementById(id + "_content");
+    if(dropdownContent.style.display == 'block')
+    {
+        closeAllDropdowns();
+    }
+    else
+    {
+        closeAllDropdowns();
+        dropdownContent.style.display = 'block';
+    }
+
+    
     dropdownContent.style.width = dropdown.offsetWidth + "px";
 }
 

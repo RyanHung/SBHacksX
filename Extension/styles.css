@@ -47,7 +47,7 @@ button {
     cursor: pointer;
     border-radius: 10px;
     width: 75vh;
-    height: 50px;
+    height: auto;
 }
 
 .dropdown-content {
@@ -80,9 +80,26 @@ button {
     width: auto;
 }
 
+/* Add styles for the tooltip and hide it initially */
+.tooltip {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+/* Add styles for the element with tooltip */
+.with-tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
 h1 {
     text-align: center; /* Center the title */
-    padding: 10px;
+    padding: 20px;
     background-color: #e0e0e0;
 }
 
