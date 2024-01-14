@@ -77,6 +77,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    var questionnaireButton = document.getElementById("questionnaire_button");
+    var questionnaireContent = document.getElementById("questionnaire_content");
+
+    questionnaireButton.addEventListener("click", function(){
+        toggleDropdown("questionnaire");
+    });
+    
+    questionnaireContent.addEventListener("click", function (event) {
+        if (event.target.tagName === "A") {
+            selectOptionQuestionnaire(event.target.dataset.option);
+        }
+    });
+
 
     // Close the dropdown if the user clicks outside of it
     window.addEventListener("click", function (event) {
@@ -87,12 +100,14 @@ document.addEventListener("DOMContentLoaded", function () {
             var interferenceDropdown = document.getElementById("interference");
             var sabaDropdown = document.getElementById("saba");
             var lungDropdown = document.getElementById("lung")
+            var questionnaireDropdown = document.getElementById("questionnaire")
             ageDropdown.classList.remove("open"); //call the remove function for every single dropdown variable
             symptomsDropdown.classList.remove("open");
             awakeningsDropdown.classList.remove("open");
             interferenceDropdown.classList.remove("open");
             sabaDropdown.classList.remove("open");
             lungDropdown.classList.remove("open");
+            questionnaireDropdown.classList.remove("open");
         }
     });
 
@@ -223,6 +238,25 @@ function agemodify()
     {
         lung_dropdown_button.innerHTML = 'Select an Option';
         lung_dropdown_content.innerHTML = '<a href="#" data-option="FEV1 > 80%">FEV1 > 80%</a> <a href="#" data-option="FEV1 = 60 - 80%"> FEV1 = 60 - 80%</a><a href="#" data-option="FEV1 < 60%">FEV1 < 60%</a><a href="#" data-option="Not applicable">Not applicable</a>';
+    }
+
+    var questionnaire_dropdown_button = document.getElementById("questionnaire_button");
+    var questionnaire_dropdown_content = document.getElementById("questionnaire_content");
+
+    if(age == '0-4')
+    {
+        questionnaire_dropdown_button.innerHTML = 'Select an Option';
+        questionnaire_dropdown_content.innerHTML = '<a href="#" data-option="Not applicable">Not applicable</a>';
+    }
+    else if(age == '5-11')
+    {
+        questionnaire_dropdown_button.innerHTML = 'Select an Option';
+        questionnaire_dropdown_content.innerHTML = '<a href="#" data-option="Not applicable">Not applicable</a>';
+    }
+    if(age == '12+')
+    {
+        questionnaire_dropdown_button.innerHTML = 'Select an Option';
+        questionnaire_dropdown_content.innerHTML = '<a href="#" data-option="ATAQ = 0, ACQ <= 0.75, ACT >= 20">ATAQ = 0, ACQ <= 0.75, ACT >= 20</a> <a href="#" data-option="ATAQ = 1 - 2, ACQ >= 1.5, ACT = 16 - 19">ATAQ = 1 - 2, ACQ >= 1.5, ACT = 16 - 19</a> <a href = "#" data-option="ATAQ = 3 - 4, ACT <= 15">ATAQ = 3 - 4, ACT <= 15</a> <a href="#" data-option="Not applicable">Not applicable</a>';
     }
 }
 
@@ -399,27 +433,28 @@ function selectOptionLung(option) {
             if(age == '5-11')
             {
                 weightcount += 1;
-                break;
             }
+            break;
         case 'FEV1 = 60 - 80%, FVC = 75 - 80%':
             if(age == '5-11')
             {
                 weight += 1;
                 weightcount += 1;
-                break;
             }
+            break;
         case 'FEV1 < 60%, FVC < 75%':
             if(age == '5-11')
             {
                 weight += 2;
                 weightcount += 1;
-                break;
             }
+            break;
         case 'FEV1 > 80%':
             if(age == '12+')
             {
                 weightcount += 1;
             }
+            break;
 
         case 'FEV1 = 60 - 80%':
             if(age == '12+')
@@ -427,6 +462,7 @@ function selectOptionLung(option) {
                 weight += 1;
                 weightcount += 1;
             }
+            break;
 
         case 'FEV1 < 60%':
             if(age == '12+')
@@ -434,8 +470,41 @@ function selectOptionLung(option) {
                 weight += 2;
                 weightcount += 1;
             }
+            break;
 
         case 'Not applicable':
+            break;
+    }
+
+}
+
+function selectOptionQuestionnaire(option) {
+    var dropdownButton = document.getElementById("questionnaire_button"); //make sure id matches drop down menu
+    dropdownButton.innerText = option;
+    toggleDropdown("questionnaire"); // Close the dropdown after selecting an option
+
+    switch (option) {
+        case 'ATAQ = 0, ACQ <= 0.75, ACT >= 20':
+            if(age == '12+')
+            {
+                weightcount += 1;
+            }
+            break;
+        case 'ATAQ = 1 - 2, ACQ >= 1.5, ACT = 16 - 19':
+            if(age == '12+')
+            {
+                weight += 1;
+                weightcount += 1;
+            }
+            break;
+        case 'ATAQ = 3 - 4, ACT <= 15':
+            if(age == '12+')
+            {
+                weight += 2;
+                weightcount += 1;
+            }
+            break;
+        case "Not Applicable":
             break;
     }
 
