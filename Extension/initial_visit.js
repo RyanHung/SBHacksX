@@ -71,6 +71,20 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    var lungButton = document.getElementById("lung_button");
+    var lungContent = document.getElementById("lung_content");
+
+    lungButton.addEventListener("click", function(){
+        toggleDropdown("lung");
+    });
+    
+    lungContent.addEventListener("click", function (event) {
+        if (event.target.tagName === "A") {
+            event.preventDefault();
+            selectOptionSaba(event.target.dataset.option);
+        }
+    });
+
 
     // Close the dropdown if the user clicks outside of it
     window.addEventListener("click", function (event) {
@@ -79,12 +93,14 @@ document.addEventListener("DOMContentLoaded", function () {
             var symptomsDropdown = document.getElementById("symptoms");
             var awakeningsDropDown = document.getElementById("awakenings");
             var interferenceDropdown =  document.getElementById("interference");
-            var sabaDropdown = this.document.getElementById("saba");
+            var sabaDropdown = document.getElementById("saba");
+            var lungDropdown = document.getElementById("lung");
             ageDropdown.classList.remove("open"); //call the remove function for every single dropdown variable
             symptomsDropdown.classList.remove("open");
             awakeningsDropDown.classList.remove("open");
             interferenceDropdown.classList.remove("open");
             sabaDropdown.classList.remove("open");
+            lungDropdown.classList.remove("open");
         }
     });
 
@@ -96,6 +112,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function goBack() {
         window.history.back();
+    }
+
+    var submitButton = document.getElementById('submitButton');
+    
+    if (submitButton) {
+        submitButton.addEventListener('click', submit);
     }
 });
 function closeAllDropdowns() {
@@ -155,17 +177,17 @@ function agemodify()
     if(age == '0-4')
     {
         symptoms_dropdown_button.innerHTML = 'Select an Option';
-        symptoms_dropdown_content.innerHTML = '<a href="#" data-option="&lt;= 2 days per week">&lt;= 2 days per week</a><a href="#" data-option="> 2 days per week">> 2 days per week</a><a href="#" data-option="Daily">Daily</a><a href="#" data-option="Throughout the day">Throughout the day</a>';
+        symptoms_dropdown_content.innerHTML = '<a href="#" data-option="&lt;= 2 days per week">&lt;= 2 days per week</a><a href="#" data-option="> 2 days per week">> 2 days per week</a><a href="#" data-option="Daily">Daily</a><a href="#" data-option="Throughout the day">Throughout the day</a> <a href="#" data-option="Not applicable">Not applicable</a>';
     }
     else if(age == '5-11')
     {
         symptoms_dropdown_button.innerHTML = 'Select an Option';
-        symptoms_dropdown_content.innerHTML = '<a href="#" data-option="&lt;= 2 days per week">&lt;= 2 days per week</a><a href="#" data-option="> 2 days per week">> 2 days per week</a><a href="#" data-option="Daily">Daily</a><a href="#" data-option="Throughout the day">Throughout the day</a>';
+        symptoms_dropdown_content.innerHTML = '<a href="#" data-option="&lt;= 2 days per week">&lt;= 2 days per week</a><a href="#" data-option="> 2 days per week">> 2 days per week</a><a href="#" data-option="Daily">Daily</a><a href="#" data-option="Throughout the day">Throughout the day</a> <a href="#" data-option="Not applicable">Not applicable</a>';
     }
     else if(age == '12+')
     {
         symptoms_dropdown_button.innerHTML = 'Select an Option';
-        symptoms_dropdown_content.innerHTML = '<a href="#" data-option="&lt;= 2 days per week">&lt;= 2 days per week</a><a href="#" data-option="> 2 days per week">> 2 days per week</a><a href="#" data-option="Daily">Daily</a><a href="#" data-option="Throughout the day">Throughout the day</a>';
+        symptoms_dropdown_content.innerHTML = '<a href="#" data-option="&lt;= 2 days per week">&lt;= 2 days per week</a><a href="#" data-option="> 2 days per week">> 2 days per week</a><a href="#" data-option="Daily">Daily</a><a href="#" data-option="Throughout the day">Throughout the day</a> <a href="#" data-option="Not applicable">Not applicable</a>';
     }
 
     var awakenings_dropdown_button = document.getElementById("awakenings_button");
@@ -174,17 +196,17 @@ function agemodify()
     if(age == '0-4')
     {
         awakenings_dropdown_button.innerHTML = 'Select an Option';
-        awakenings_dropdown_content.innerHTML = '<a href="#" data-option="0 Times">0 Times</a> <a href="#" data-option="1-2 times per month">1-2 times per month</a><a href="#" data-option="3-4x per month">3-4x per month</a><a href="#" data-option="Over 1x per week">Over 1x per week</a>';
+        awakenings_dropdown_content.innerHTML = '<a href="#" data-option="0 Times">0 Times</a> <a href="#" data-option="1-2 times per month">1-2 times per month</a><a href="#" data-option="3-4x per month">3-4x per month</a><a href="#" data-option="Over 1x per week">Over 1x per week</a> <a href="#" data-option="Not applicable">Not applicable</a>';
     }
     else if(age == '5-11')
     {
         awakenings_dropdown_button.innerHTML = 'Select an Option';
-        awakenings_dropdown_content.innerHTML = '<a href="#" data-option="<= 2 times per month"><= 2 times per month</a> <a href="#" data-option="3-4x/month">3-4x/month</a><a href="#" data-option=">1x/week but not nightly">>1x/week but not nightly</a><a href="#" data-option="Often 7x/week">Often 7x/week</a>';
+        awakenings_dropdown_content.innerHTML = '<a href="#" data-option="<= 2 times per month"><= 2 times per month</a> <a href="#" data-option="3-4x/month">3-4x/month</a><a href="#" data-option=">1x/week but not nightly">>1x/week but not nightly</a><a href="#" data-option="Often 7x/week">Often 7x/week</a> <a href="#" data-option="Not applicable">Not applicable</a>';
     }
     else if(age == '12+')
     {
         awakenings_dropdown_button.innerHTML = 'Select an Option';
-        awakenings_dropdown_content.innerHTML = '<a href="#" data-option="<= 2 times per month"><= 2 times per month</a> <a href="#" data-option="3-4x/month">3-4x/month</a><a href="#" data-option=">1x/week but not nightly">>1x/week but not nightly</a><a href="#" data-option="Often 7x/week">Often 7x/week</a>';
+        awakenings_dropdown_content.innerHTML = '<a href="#" data-option="<= 2 times per month"><= 2 times per month</a> <a href="#" data-option="3-4x/month">3-4x/month</a><a href="#" data-option=">1x/week but not nightly">>1x/week but not nightly</a><a href="#" data-option="Often 7x/week">Often 7x/week</a> <a href="#" data-option="Not applicable">Not applicable</a>';
     }
 
     var interference_dropdown_button = document.getElementById("interference_button");
@@ -193,26 +215,43 @@ function agemodify()
     if(age == '0-4')
     {
         interference_dropdown_button.innerHTML = 'Select an Option';
-        interference_dropdown_content.innerHTML = '<a href="#" data-option="None">None</a> <a href="#" data-option="Minor Limitation">Minor Limitation</a><a href="#" data-option="Some Limitation">Some Limitation</a><a href="#" data-option="Extremely Limited">Extremely Limited</a>';
+        interference_dropdown_content.innerHTML = '<a href="#" data-option="None">None</a> <a href="#" data-option="Minor Limitation">Minor Limitation</a><a href="#" data-option="Some Limitation">Some Limitation</a><a href="#" data-option="Extremely Limited">Extremely Limited</a> <a href="#" data-option="Not applicable">Not applicable</a>';
     }
     else if(age == '5-11')
     {
         interference_dropdown_button.innerHTML = 'Select an Option';
-        interference_dropdown_content.innerHTML = '<a href="#" data-option="None">None</a> <a href="#" data-option="Minor Limitation">Minor Limitation</a><a href="#" data-option="Some Limitation">Some Limitation</a><a href="#" data-option="Extremely Limited">Extremely Limited</a>';
+        interference_dropdown_content.innerHTML = '<a href="#" data-option="None">None</a> <a href="#" data-option="Minor Limitation">Minor Limitation</a><a href="#" data-option="Some Limitation">Some Limitation</a><a href="#" data-option="Extremely Limited">Extremely Limited</a> <a href="#" data-option="Not applicable">Not applicable</a>';
     }
     else if(age == '12+')
     {
         interference_dropdown_button.innerHTML = 'Select an Option';
-        interference_dropdown_content.innerHTML = '<a href="#" data-option="None">None</a> <a href="#" data-option="Minor Limitation">Minor Limitation</a><a href="#" data-option="Some Limitation">Some Limitation</a><a href="#" data-option="Extremely Limited">Extremely Limited</a>';
+        interference_dropdown_content.innerHTML = '<a href="#" data-option="None">None</a> <a href="#" data-option="Minor Limitation">Minor Limitation</a><a href="#" data-option="Some Limitation">Some Limitation</a><a href="#" data-option="Extremely Limited">Extremely Limited</a> <a href="#" data-option="Not applicable">Not applicable</a>';
     }
 
     var saba_dropdown_button = document.getElementById("saba_button");
     var saba_dropdown_content = document.getElementById("saba_content")
 
     saba_dropdown_button.innerHTML = 'Select an Option';
-    saba_dropdown_content.innerHTML = '<a href="#" data-option="<= 2 days per week"><= 2 days per week</a> <a href="#" data-option="> 2 days per week">> 2 days per week</a><a href="#" data-option="Daily">Daily</a><a href="#" data-option="Several times per day">Several times per day</a>';
+    saba_dropdown_content.innerHTML = '<a href="#" data-option="<= 2 days per week"><= 2 days per week</a> <a href="#" data-option="> 2 days per week">> 2 days per week</a><a href="#" data-option="Daily">Daily</a><a href="#" data-option="Several times per day">Several times per day</a> <a href="#" data-option="Not applicable">Not applicable</a>';
 
+    var lung_dropdown_button = document.getElementById("lung_button");
+    var lung_dropdown_content = document.getElementById("lung_content");
 
+    if(age == '0-4')
+    {
+        lung_dropdown_button.innerHTML = 'Select an Option';
+        lung_dropdown_content.innerHTML = '<a href="#" data-option="Not applicable">Not applicable</a>';
+    }
+    else if(age == '5-11')
+    {
+        lung_dropdown_button.innerHTML = 'Select an Option';
+        lung_dropdown_content.innerHTML = '<a href="#" data-option="FEV1 > 80%, FVC > 85%">FEV1 > 80%, FVC > 85%</a> <a href="#" data-option="FEV1 > 80%, FVC > 80%">FEV1 > 80%, FVC > 80%</a> <a href="#" data-option="FEV1 = 60 - 80%, FVC = 75 - 80%">FEV1 = 60 - 80%, FVC = 75 - 80%</a><a href="#" data-option="FEV1 < 60%, FVC < 75%">FEV1 < 60%, FVC < 75%</a> <a href="#" data-option="Not applicable">Not applicable</a>';
+    }
+    else if(age == '12+')
+    {
+        lung_dropdown_button.innerHTML = 'Select an Option';
+        lung_dropdown_content.innerHTML = '<a href="#" data-option="FEV1 > 80%, FVC is Normal">FEV1 > 80%, FVC is Normal</a> <a href="#" data-option="FEV1 = 60 - 80%, FVC is reduced 5%">FEV1 = 60 - 80%, FVC is reduced 5%</a><a href="#" data-option="FEV1 < 60%, FVC is reduced >5%">FEV1 < 60%, FVC is reduced >5%</a> <a href="#" data-option="Not applicable">Not applicable</a>';
+    }
 }
 
 var symptomSeverity = -1;
@@ -240,6 +279,9 @@ function selectOptionSymptoms(option) {
             break;
         case "Throughout the day":
             symptomSeverity = 3;
+            break;
+        case "Not applicable":
+            symptomSeverity = -1;
             break;
     }
 
@@ -276,6 +318,9 @@ function selectOptionAwakenings(option) {
         case "Over 1x per week":
             awakeningsSeverity= 3;
             break;
+        case "Not applicable":
+            awakeningsSeverity = -1;
+            break;
     }
 
 }
@@ -298,6 +343,8 @@ function selectOptionInterference(option) {
         case "Extremely Limited":
             interferenceSeverity= 3;
             break;
+        case "Not applicable":
+            interferenceSeverity = -1;
     }
 
 }
@@ -320,6 +367,155 @@ function selectOptionSaba(option) {
         case "Daily":
             sabaSeverity= 2;
             break;
+        case "Not applicable":
+            sabaSeverity = -1;
+            break;
     }
 
+}
+
+function selectOptionLung(option) {
+    var dropdownButton = document.getElementById("lung_button"); //make sure id matches drop down menu
+    dropdownButton.innerText = option;
+    toggleDropdown("lung"); // Close the dropdown after selecting an option
+
+    switch (option) {
+        case 'FEV1 > 80%, FVC > 85%':
+            if(age == '5-11')
+            {
+                lungSeverity = 0;
+                break;
+            }
+        case 'FEV1 > 80%, FVC > 80%':
+            if(age == '5-11')
+            {
+                lungSeverity = 1;
+                break;
+            }
+        case 'FEV1 = 60 - 80%, FVC = 75 - 80%':
+            if(age == '5-11')
+            {
+                lungSeverity = 2;
+                break;
+            }
+        case 'FEV1 < 60%, FVC < 75%':
+            if(age == '5-11')
+            {
+                lungSeverity = 3;
+                break;
+            }
+        case 'FEV1 > 80%, FVC is Normal':
+            if(age == '5-11')
+            {
+                lungSeverity = 0.5;
+                break;
+            }
+        case 'FEV1 = 60 - 80%, FVC is reduced 5%':
+            if(age == '5-11')
+            {
+                lungSeverity = 2;
+                break;
+            }
+        case 'FEV1 < 60%, FVC is reduced >5%':
+            if(age == '5-11')
+            {
+                lungSeverity = 3;
+                break;
+            }
+        case "Not applicable":
+            lungSeverity = -1;
+            break;
+    }
+
+}
+
+function submit()
+{
+    var message = "";
+
+    var count = 0;
+
+    var weight = 0;
+    if(symptomSeverity > -1)
+    {
+        weight += symptomSeverity;
+        count += 1;
+    }
+    if(awakeningsSeverity > -1)
+    {
+        weight += awakeningsSeverity;
+        count += 1;
+    }
+    if(interferenceSeverity > -1)
+    {
+        weight += interferenceSeverity;
+        count += 1;
+    }
+    if(sabaSeverity > -1)
+    {
+        weight += sabaSeverity;
+        count += 1;
+    }
+    if(lungSeverity > -1)
+    {
+        weight += lungSeverity;
+        count += 1;
+    }
+    if(questionnaireSeverity > -1)
+    {
+        weight += questionnaireSeverity;
+        count += 1;
+    }
+    if(exacerbationsSeverity > -1)
+    {
+        weight += exacerbationsSeverity;
+        count += 1;
+    }
+
+    severity = weight * 1.0 / count;
+
+    message += "The patient in question has a severity rating of " + severity * 3.3333 + " on a scale from 0 to 10. ";
+
+    if(count > 0)
+    {
+
+        if(severity <= 3.33)
+        {
+            message += "Maintain current step. Regular follow-up every 1-6 months. Consider step down if well controlled for at least 3 months. "
+        }
+        else if(severity <= 6.66)
+        {
+            if(age == '0-4')
+            {
+                message += "Step up 1 step. ";
+            }
+            else if(age == '5-11')
+            {
+                message += "Step up at least 1 step. ";
+            }
+            else if(age == '12+')
+            {
+                message += "Step up 1 step. ";
+            }
+
+            message += "Reevaluate in 2 - 6 weeks to achieve control. For children 0 - 4 years, if no clear benefit observed in 4 - 6 weeks, consider adjusting therapy or alternative diagnoses. ";
+
+        }
+        else
+        {
+            message += "Consider short course of oral cortisteroids. Step up 1 - 2 steps. Reevaluate in 2 weeks to achieve control. ";
+        }
+
+        if(severity > 0.66)
+        {
+            message += "Before step up in treatment, review adherence to medication, inhaler technique, and environmental control. If alternative treatment was used, discontinue and use preferred treatment for that step. For side effects, consider alternative treatment options. ";
+        }
+    }
+    else
+    {
+        message = "Not enough information. Please provide at least one point of context."
+    }
+
+    var text = document.getElementById("output-message");
+    text.innerHTML = message;
 }
