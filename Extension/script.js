@@ -1,4 +1,4 @@
-import OpenAI from "openai";
+import { askChatGPT } from "../GPT/index.js";
 
 document.addEventListener("DOMContentLoaded", function () {
     var treatmentButton = document.getElementById("treatment_button"); //copy lines 2-13 for every dropdown menu
@@ -73,25 +73,20 @@ function selectOptionTreatment(option) {
 
 }
 
-document.getElementById("gptButton").addEventListener("click", askChatGPT);
+document.getElementById("gptButton").addEventListener("click", ChatGPT);
 
 const openai = new OpenAI();
 
-async function askChatGPT() {
+async function ChatGPT() {
   // Get the user's question from the textarea
   const question = document.getElementById("question").value;
 
   try {
     // Send the question to ChatGPT and get the response
-    const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      messages: [
-        { role: "user", content: question },
-      ],
-    });
+    const response = await askChatGPT(question);
 
     // Display the response in an alert
-    alert(response.choices[0].message.content);
+    alert(response);
   } catch (error) {
     console.error(error);
     alert("Error: Could not get response from ChatGPT.");

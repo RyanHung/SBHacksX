@@ -9,12 +9,13 @@ import OpenAI from "openai";
 */
 
 const openai = new OpenAI();
-
-const completion = await openai.chat.completions.create({
-    model: "gpt-3.5-turbo",
-    messages: [
-        {role: "user", content: "Tell me a joke"},
-    ]   
-})
-
-console.log(completion.choices[0]);
+export async function askChatGPT(question) {
+    const completion = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages: [
+        { role: "user", content: question },
+      ],
+    });
+  
+    return completion.choices[0].text;
+}
