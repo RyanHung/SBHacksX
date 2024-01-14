@@ -674,4 +674,5 @@ function submit()
 
     var text = document.getElementById("output-message");
     text.innerHTML = message;
+    text.style.visibility = 'visible';
 }

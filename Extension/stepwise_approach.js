@@ -17,12 +17,12 @@ document.addEventListener("DOMContentLoaded", function () {
     var stepsContent = document.getElementById("steps_content");
 
     stepsButton.addEventListener("click", function(){
-        event.preventDefault();
         toggleDropdown("steps")
     });
     
     stepsContent.addEventListener("click", function (event) {
         if (event.target.tagName === "A") {
+            event.preventDefault();
             selectOptionSteps(event.target.dataset.option);
             outputTreatment(event.target.dataset.option);
         }
@@ -151,6 +151,9 @@ function outputTreatment(option) {
     preferredTreatment.innerText = "";
     alternativeTreatment.innerText = "";
 
+    preferredTreatment.style.visibility = 'visible';
+    alternativeTreatment.style.visibility = 'visible';
+
 
     if (age == "0-4") {
         switch (option) {
@@ -237,6 +240,8 @@ function outputTreatment(option) {
         // Handle the case when age doesn't match any condition
         preferredTreatment.innerText = "Invalid Selection";
         alternativeTreatment.innerText = "";
+        alternativeTreatment.style.visibility = hidden;
     }
+
 }
     
