@@ -4,7 +4,7 @@ body {
     padding: 0;
     height: 600px;
     width:500px;
-    background-color: #f4f4f4;
+    background-color: #4db6ac;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -177,4 +177,17 @@ text{
     text-align: center;
     margin: 0 auto;
     visibility: hidden;
+  }
+
+  /* Style the chatbot input field */
+  .chat-input-field {
+    width: calc(100% - 20px); /* Adjust width to consider padding */
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 15px; /* Increased border-radius for rounded corners */
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #333;
+    background-color: #ccc;
   }
