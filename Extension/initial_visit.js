@@ -92,6 +92,9 @@ function selectOptionAge(option) {
 
 }
 
+
+
+
 var symptoms_weight;
 
 function selectOptionSymptoms(option) {
