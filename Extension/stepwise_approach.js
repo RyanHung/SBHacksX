@@ -144,77 +144,99 @@ function selectOptionSteps(option) {
 
     function outputTreatment(option) {
         // Get the HTML element by its ID
-        var outputElement = document.getElementById("output_treatment");
+        var preferredTreatment = document.getElementById("treatment_preferred");
+        var alternativeTreatment = document.getElementById("treatment_alternative")
     
         // Reset the output content
-        outputElement.innerText = "";
+        preferredTreatment.innerText = "";
+        alternativeTreatment.innerText = "";
+
     
         if (age == "0-4") {
             switch (option) {
                 case 'Step 1':
-                    outputElement.innerHTML = "Output for Step 1 (Age 0-4)";
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
                     break;
                 case 'Step 2':
-                    outputElement.innerText = "Output for Step 2 (Age 0-4)";
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
                     break;
                 case 'Step 3':
-                    outputElement.innerText = "Output for Step 3 (Age 0-4)";
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
                     break;
                 case 'Step 4':
-                    outputElement.innerText = "Output for Step 1 (Age 0-4)";
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
                     break;
                 case 'Step 5':
-                    outputElement.innerText = "Output for Step 2 (Age 0-4)";
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
                     break;
                 case 'Step 6':
-                    outputElement.innerText = "Output for Step 3 (Age 0-4)";
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
                     break;
             }
         } else if (age == "5-11") {
             switch (option) {
                 case 'Step 1':
-                    outputElement.innerText = "Output for Step 1 (Age 0-4)";
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
                     break;
                 case 'Step 2':
-                    outputElement.innerText = "Output for Step 2 (Age 0-4)";
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
                     break;
                 case 'Step 3':
-                    outputElement.innerText = "Output for Step 3 (Age 0-4)";
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
                     break;
                 case 'Step 4':
-                    outputElement.innerText = "Output for Step 1 (Age 0-4)";
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
                     break;
                 case 'Step 5':
-                    outputElement.innerText = "Output for Step 2 (Age 0-4)";
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
                     break;
                 case 'Step 6':
-                    outputElement.innerText = "Output for Step 3 (Age 0-4)";
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
                     break;
             }
         } else if (age == "12+") {
             switch (option) {
                 case 'Step 1':
-                    outputElement.innerText = "Output for Step 1 (Age 0-4)";
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
                     break;
                 case 'Step 2':
-                    outputElement.innerText = "Output for Step 2 (Age 0-4)";
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
                     break;
                 case 'Step 3':
-                    outputElement.innerText = "Output for Step 3 (Age 0-4)";
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
                     break;
                 case 'Step 4':
-                    outputElement.innerText = "Output for Step 1 (Age 0-4)";
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
                     break;
                 case 'Step 5':
-                    outputElement.innerText = "Output for Step 2 (Age 0-4)";
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
                     break;
                 case 'Step 6':
-                    outputElement.innerText = "Output for Step 3 (Age 0-4)";
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
                     break;
             }
         } else {
             // Handle the case when age doesn't match any condition
-            outputElement.innerText = "Invalid selection";
+            preferredTreatment.innerText = "Invalid Selection";
+            alternativeTreatment.innerText = "";
         }
     }
     
