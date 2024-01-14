@@ -630,7 +630,7 @@ function submit()
 
     severity = weight * 1.0 / count;
 
-    message += "The patient in question has a severity rating of " + severity * 5 + " on a scale from 0 to 10. ";
+    message += "The patient in question has a severity rating of " + (severity * 5).toFixed(2) + " on a scale from 0 to 10. ";
 
     if(count > 0)
     {
