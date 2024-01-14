@@ -22,7 +22,7 @@ submitButton.addEventListener("click", async () => {
       headers: {
         "Content-Type": "application/json",
         // Include your OpenAI API key here
-        "Authorization": "Bearer "
+        "Authorization": "Bearer YOUR_KEY_HERE"
       },
       body: JSON.stringify({
         model: "gpt-3.5-turbo",

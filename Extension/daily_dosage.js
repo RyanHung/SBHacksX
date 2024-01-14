@@ -158,6 +158,7 @@ function selectOptionDrug(option) {
                 medmessage.innerText = "Med: > 540 - 1080 mcg(2 - 3 180 mcg inhales 2x per day).";
                 highmessage.innerText = "High: > 1080 mcg(>= 4 inhales 2x per day).";
             }
+            break;
         case "Budesonide Nebules":
             if(age == '0-4')
             {
@@ -171,6 +172,7 @@ function selectOptionDrug(option) {
                 medmessage.innerText = "Med: 1.0 mg(1 0.5 mg neb 2x per day or 1 1.0 mg neb per day).";
                 highmessage.innerText = "High: 2.0 mg(1 1.0 mg neb 2x per day).";
             }
+            break;
         case "Ciclesonide MDI":
             if(age == '5-11')
             {
@@ -184,16 +186,68 @@ function selectOptionDrug(option) {
                 medmessage.innerText = "Med: > 320 - 640 mcg(3 - 4 80 mcg puffs 2x per day or 2 160 mcg puffs 2x per day).";
                 highmessage.innerText = "High: > 640 mcg(>= 3 160 mcg puffs 2x per day).";
             }
+            break;
         case "Flunisolide MDI":
             if(age == '5-11')
             {
-                lowmessage += "Low: 160 mcg(1 80 mcg puff 2x per day).";
-                medmessage += "Med: 320-480 mcg(2-3 puffs 2x/day).";
-                highmessage += "High: >= 480 mcg(>= 4 puffs 2x/day";
+                lowmessage.innerText += "Low: 160 mcg(1 80 mcg puff 2x per day).";
+                medmessage.innerText += "Med: 320 - 480 mcg(2 - 3 80 mcg puffs 2x/day).";
+                highmessage.innerText += "High: >= 480 mcg(>= 4 80 mcg puffs 2x/day).";
             }
             else if(age == '12+') 
             {
-                
+                lowmessage.innerText += "Low: 320 mcg(2 80 mcgpuffs 2x/day).";
+                medmessage.innerText += "Med: > 320 - 640 mcg(3 - 4 80 mcg puffs 2x/day).";
+                highmessage.innerText += "High: > 640 mcg(>= 5 80 mcg puffs 2x/day).";
             }
+            break;
+        case "Fluticasone MDI":
+            if(age == '0-4')
+            {
+                lowmessage.innerText += "Low: 176 mcg(2 44 mcg puffs 2x/day).";
+                medmessage.innerText += "Med: > 176 - 352 mcg(3 - 4 44 mcg puffs 2x per day or 1 110 mcg puff 2x per day).";
+                highmessage.innerText += "High: > 352 mcg(>= 2 110 mcg puffs 2x per day).";
+            }
+            else if(age == '5-11')
+            {
+                lowmessage.innerText += "Low: 88 - 176 mcg(1 - 2 44 mcg puffs 2x per day).";
+                medmessage.innerText += "Med: > 176 - 352 mcg(3 - 4 44 mcg puffs 2x per day or 1 110 mcg puff 2x per day).";
+                highmessage.innerText += "High: > 352 mcg(>= 2 110 mcg puffs 2x per day).";
+            }
+            else if(age == '12+')
+            {
+                lowmessage.innerText += "Low: 88 - 264 mcg(1 - 3 44 mcg puffs 2x per day).";
+                medmessage.innerText += "Med: > 264 - 440 mcg(2 110 mcg puffs 2x per day or 1 220 mcg puff 2x per day).";
+                highmessage.innerText += "High: > 440 mcg(3 110 mcg puffs 2x per day or >= 2 220 mcg puffs 2x per day).";
+            }
+            break;
+        case "Fluticasone DPI":
+            if(age == '5-11')
+            {
+                lowmessage.innerText += "Low: 100 - 200 mcg(1 - 2 50 mcg inhs 2x per day or 1 100 mcg inh 2x per day).";
+                medmessage.innerText += "Med: > 200 - 400 mcg(3 - 4 50 mcg inhs 2x per day or 2 100 mcg inhs 2x per day).";
+                highmessage.innerText += "High: > 400 mcg(> 2 100 mcg inhs 2x per day or 1 250 mcg inh 2x per day).";
+            }
+            else if(age == '12+')
+            {
+                lowmessage.innerText += "Low: 100 - 300 mcg(1 - 3 50 mcg inhs 2x per day).";
+                medmessage.innerText += "Med: > 300 - 500 mcg(2 100 mcg inhs per day or 1 250 mcg inh 2x per day).";
+                highmessage.innerText += "High: > 500 mcg(>= 3 100 mcg inhs per day or >= 2 250 mcg inhs 2x per day).";
+            }
+            break;
+        case "Mometasone DPI":
+            if(age = '5-11') 
+            {
+                lowmessage.innerText += "Low: 110 mcg(1 110 mcg inh per day).";
+                medmessage.innerText += "Med: 220 - 440 mcg(1 - 2 110 mcg inhs 2x per day or 1 - 2 220 mcg inhs per day).";
+                highmessage.innerText += "High: > 440 mcg(>= 3 110 mcg inhs 2x per day or >= 3 220 mcg inhs divided in 2 doses).";
+            }
+            else if(age == '12+')
+            {
+                lowmessage.innerText += "Low: 110 - 220 mcg(1 - 2 110 mcg inhs pm or 1 220 mcg inh pm).";
+                medmessage.innerText += "Med: > 220 - 440 mcg(3-4 110 mcg inhs pm or 2 110 mcg inhs 2x per day or 1 220 mcg inh 2x per day or 2 220 mcg inhs pm).";
+                highmessage.innerText += "High > 440 mcg(>= 3 110 mcg inhs 2x per day or >= 3 220 mcg inhs divided in 2 doses).";
+            }
+            break;
     }
 }

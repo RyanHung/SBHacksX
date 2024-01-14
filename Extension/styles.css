@@ -4,7 +4,7 @@ body {
     padding: 0;
     height: 600px;
     width:500px;
-    background-color: #f4f4f4;
+    background-color: #4db6ac;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -27,7 +27,7 @@ body {
 }
 
 .back-button {
-    background-color: #ff0000;
+    background-color: #0053ac;
     color: #fff;
     font-size: 1.5rem;
     padding: 10px;
@@ -113,6 +113,7 @@ h1 {
     text-align: center; /* Center the title */
     padding: 20px;
     background-color: #e0e0e0;
+    border-radius: 20;
 }
 
 h2 {
@@ -155,7 +156,9 @@ text{
   /* Response area */
   #response {
     border: 3px solid #ccc;
-    border-radius: 5px;
+    background-color: #404954;
+    color: lightgray;
+    border-radius: 3px;
     padding: 15px;
     margin-top: 15px;
     font-size: 14px;
@@ -176,5 +179,18 @@ text{
     font-size:16px;
     text-align: center;
     margin: 0 auto;
-    visibility: hidden;
+    visibility: 'hidden';
+  }
+
+  /* Style the chatbot input field */
+  .chat-input-field {
+    width: calc(100% - 20px); /* Adjust width to consider padding */
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 15px; /* Increased border-radius for rounded corners */
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #333;
+    background-color: #ccc;
   }

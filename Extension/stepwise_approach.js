@@ -160,6 +160,7 @@ function outputTreatment(option) {
             case 'Step 1':
                 preferredTreatment.innerText = "Preferred Treatment: SABA as Needed";
                 alternativeTreatment.innerText = "";
+                alternativeTreatment.style.visibility = 'hidden';
                 break;
             case 'Step 2':
                 preferredTreatment.innerText = "Preferred Treatment: Low-Dose ICS";
@@ -168,18 +169,22 @@ function outputTreatment(option) {
             case 'Step 3':
                 preferredTreatment.innerText = "Preferred Treatment: Medium-Dose ICS";
                 alternativeTreatment.innerText = "";
+                alternativeTreatment.style.visibility = 'hidden';
                 break;
             case 'Step 4':
                 preferredTreatment.innerText = "Preferred Treatment: Medium-Dose ICS + Either LABA or Montelukast";
                 alternativeTreatment.innerText = "";
+                alternativeTreatment.style.visibility = 'hidden';
                 break;
             case 'Step 5':
                 preferredTreatment.innerText = "Preferred Treatment: High-dose ICS + Either LABA or Montelukast";
                 alternativeTreatment.innerText = "";
+                alternativeTreatment.style.visibility = 'hidden';
                 break;
             case 'Step 6':
                 preferredTreatment.innerText = "Preferred Treatment: High-Dose ICS + Either LABA or MonteLukast + Oral Corticosteroids";
                 alternativeTreatment.innerText = "";
+                alternativeTreatment.style.visibility = 'hidden';
                 break;
         }
     } else if (age == "5-11") {
@@ -187,6 +192,7 @@ function outputTreatment(option) {
             case 'Step 1':
                 preferredTreatment.innerText = "Preferred Treatment: SABA As Needed";
                 alternativeTreatment.innerText = "";
+                alternativeTreatment.style.visibility = 'hidden';
                 break;
             case 'Step 2':
                 preferredTreatment.innerText = "Preferred Treatment: Low Dose ICS";
@@ -195,6 +201,7 @@ function outputTreatment(option) {
             case 'Step 3':
                 preferredTreatment.innerText = "Preferred Treatment: Low Dose ICS + Either LABA, LTRA or Theophylline or Medium-Dose ICS";
                 alternativeTreatment.innerText = "";
+                alternativeTreatment.style.visibility = 'hidden';
                 break;
             case 'Step 4':
                 preferredTreatment.innerText = "Preferred Treatment: Medium Dose ICS + LABA";
@@ -214,6 +221,7 @@ function outputTreatment(option) {
             case 'Step 1':
                 preferredTreatment.innerText = "Preferred Treatment: SABA as needed";
                 alternativeTreatment.innerText = "";
+                alternativeTreatment.style.visibility = 'hidden';
                 break;
             case 'Step 2':
                 preferredTreatment.innerText = "Preferred Treatment: Low-Dose ICS";
@@ -230,17 +238,19 @@ function outputTreatment(option) {
             case 'Step 5':
                 preferredTreatment.innerText = "Preferred Treatment: High-Dose ICS + LABA and Consider Omalizumab for Patients who have Allergies";
                 alternativeTreatment.innerText = "";
+                alternativeTreatment.style.visibility = 'hidden';
                 break;
             case 'Step 6':
                 preferredTreatment.innerText = "Preferred Treatment: High-Dose ICS + LABA + Oral Corticosteroid and Consider Omalizumab for Patients who have Allergies";
                 alternativeTreatment.innerText = "";
+                alternativeTreatment.style.visibility = 'hidden';
                 break;
         }
     } else {
         // Handle the case when age doesn't match any condition
         preferredTreatment.innerText = "Invalid Selection";
         alternativeTreatment.innerText = "";
-        alternativeTreatment.style.visibility = hidden;
+        alternativeTreatment.style.visibility = 'hidden';
     }
 
 }
