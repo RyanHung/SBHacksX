@@ -90,6 +90,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    var exacerbationsButton = document.getElementById("exacerbations_button");
+    var exacerbationsContent = document.getElementById("exacerbations_content");
+
+    exacerbationsButton.addEventListener("click", function(){
+        toggleDropdown("exacerbations");
+    });
+    
+    exacerbationsContent.addEventListener("click", function (event) {
+        if (event.target.tagName === "A") {
+            selectOptionExacerbations(event.target.dataset.option);
+        }
+    });
+
 
     // Close the dropdown if the user clicks outside of it
     window.addEventListener("click", function (event) {
@@ -99,8 +112,9 @@ document.addEventListener("DOMContentLoaded", function () {
             var awakeningsDropdown = document.getElementById("awakenings");
             var interferenceDropdown = document.getElementById("interference");
             var sabaDropdown = document.getElementById("saba");
-            var lungDropdown = document.getElementById("lung")
-            var questionnaireDropdown = document.getElementById("questionnaire")
+            var lungDropdown = document.getElementById("lung");
+            var questionnaireDropdown = document.getElementById("questionnaire");
+            var exacerbationsDropdown = document.getElementById("exacerbations");
             ageDropdown.classList.remove("open"); //call the remove function for every single dropdown variable
             symptomsDropdown.classList.remove("open");
             awakeningsDropdown.classList.remove("open");
@@ -108,6 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
             sabaDropdown.classList.remove("open");
             lungDropdown.classList.remove("open");
             questionnaireDropdown.classList.remove("open");
+            exacerbationsDropdown.classList.remove("open");
         }
     });
 
@@ -258,6 +273,27 @@ function agemodify()
         questionnaire_dropdown_button.innerHTML = 'Select an Option';
         questionnaire_dropdown_content.innerHTML = '<a href="#" data-option="ATAQ = 0, ACQ <= 0.75, ACT >= 20">ATAQ = 0, ACQ <= 0.75, ACT >= 20</a> <a href="#" data-option="ATAQ = 1 - 2, ACQ >= 1.5, ACT = 16 - 19">ATAQ = 1 - 2, ACQ >= 1.5, ACT = 16 - 19</a> <a href = "#" data-option="ATAQ = 3 - 4, ACT <= 15">ATAQ = 3 - 4, ACT <= 15</a> <a href="#" data-option="Not applicable">Not applicable</a>';
     }
+
+    var exacerbations_dropdown_button = document.getElementById("exacerbations_button");
+    var exacerbations_dropdown_content = document.getElementById("exacerbations_content");
+
+    if(age == '0-4')
+    {
+        exacerbations_dropdown_button.innerHTML = 'Select an Option';
+        exacerbations_dropdown_content.innerHTML = '<a href="#" data-option="0 - 1/year">0 - 1/year</a> <a href="#" data-option="2 - 3/year">2 - 3/year</a> <a href="#" data-option="> 3/year">> 3/year</a> <a href="#" data-option="Not applicable">Not applicable</a>';
+    }
+    else if(age == '5-11')
+    {
+        exacerbations_dropdown_button.innerHTML = 'Select an Option';
+        exacerbations_dropdown_content.innerHTML = '<a href="#" data-option="0 - 1/year">0 - 1/year</a> <a href="#" data-option=">= 2/year">>= 2/year</a> <a href="#" data-option="Not applicable">Not applicable</a>';
+
+    }
+    if(age == '12+')
+    {
+        exacerbations_dropdown_button.innerHTML = 'Select an Option';
+        exacerbations_dropdown_content.innerHTML = '<a href="#" data-option="0 - 1/year">0 - 1/year</a> <a href="#" data-option=">= 2/year">>= 2/year</a> <a href="#" data-option="Not applicable">Not applicable</a>';    
+    }
+
 }
 
 var weight = 0;
@@ -504,6 +540,41 @@ function selectOptionQuestionnaire(option) {
                 weightcount += 1;
             }
             break;
+        case "Not Applicable":
+            break;
+    }
+
+}
+
+function selectOptionExacerbations(option) {
+    var dropdownButton = document.getElementById("exacerbations_button"); //make sure id matches drop down menu
+    dropdownButton.innerText = option;
+    toggleDropdown("exacerbations"); // Close the dropdown after selecting an option
+
+    switch (option) {
+        case '0 - 1/year':
+            weightcount += 1;
+            break;
+        case '2 - 3/year':
+            if(age == '0-4')
+            {
+                weight += 1;
+                weightcount += 1;
+            }
+            break;
+        case '> 3/year':
+            if(age == '0-4')
+            {
+                weight += 2;
+                weightcount += 1;
+            }
+            break;
+        case '>= 2/year':
+            if(age =='5-11' || age == '12+')
+            {
+                weight += 1.5,
+                weightcount += 1;
+            }
         case "Not Applicable":
             break;
     }
