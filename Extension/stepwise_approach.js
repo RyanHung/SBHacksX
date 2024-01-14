@@ -13,17 +13,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    var symptomsButton = document.getElementById("steps_button");
-    var symptomsContent = document.getElementById("steps_content");
+    var stepsButton = document.getElementById("steps_button");
+    var stepsContent = document.getElementById("steps_content");
 
-    symptomsButton.addEventListener("click", function(){
+    stepsButton.addEventListener("click", function(){
         event.preventDefault();
         toggleDropdown("steps")
     });
     
-    symptomsContent.addEventListener("click", function (event) {
+    stepsContent.addEventListener("click", function (event) {
         if (event.target.tagName === "A") {
             selectOptionSteps(event.target.dataset.option);
+            outputTreatment(event.target.dataset.option);
         }
     });
 
@@ -49,14 +50,31 @@ document.addEventListener("DOMContentLoaded", function () {
         window.history.back();
     }
 });
-function toggleDropdown(id) {
-    var dropdown = document.getElementById(id);
-    dropdown.classList.toggle("open");
 
-    var dropdownContent = document.getElementById(id + "_content");
-    dropdownContent.style.width = dropdown.offsetWidth + "px";
+function closeAllDropdowns() {
+    var dropdowns = document.getElementsByClassName('dropdown-content');
+    for(var i = 0; i < dropdowns.length; i++)
+    {
+        dropdowns[i].style.display = 'none';   
+    }
 }
 
+function toggleDropdown(id) {
+    var dropdown = document.getElementById(id);
+    var dropdownContent = document.getElementById(id + "_content");
+    if(dropdownContent.style.display == 'block')
+    {
+        closeAllDropdowns();
+    }
+    else
+    {
+        closeAllDropdowns();
+        dropdownContent.style.display = 'block';
+    }
+
+    
+    dropdownContent.style.width = dropdown.offsetWidth + "px";
+}
 var age;
 
 function selectOptionAge(option) {
@@ -76,9 +94,24 @@ function selectOptionAge(option) {
             break;
     }
 
+    agemodify();
+
+}
+
+function agemodify()
+{
+    var steps_dropdown_button = document.getElementById("steps_button");
+    var steps_dropdown_content = document.getElementById("steps_content")
+
+    steps_dropdown_button.innerHTML = 'Select an Option';
+    steps_dropdown_content.innerHTML = 
+    '<a href="#" data-option="Step 1">Step 1</a><a href="#" data-option="Step 2">Step 2</a><a href="#" data-option="Step 3">Step 3</a><a href="#" data-option="Step 4">Step 4</a><a href="#" data-option="Step 5">Step 5</a><a href="#" data-option="Step 6">Step 6</a>'
 }
 
 var steps;
+// tooltip for saba, ics, laba, ltra
+const treatments = ["SABA as needed", "low-dose ICS", "medium-dose ICS", "LABA", "montelukast", "oral corticosteroids", "high-dose ICS", "cromolyn", "LTRA", 
+"theophylline", "zileuton", "consider omalizumab for patients who have allergies", "consider subcutaneous allergen immunotherapy for patients who have persistent, allergic asthma"];
 
 function selectOptionSteps(option) {
     var dropdownButton = document.getElementById("steps_button"); //make sure id matches drop down menu
@@ -105,5 +138,105 @@ function selectOptionSteps(option) {
             steps = 'Step 6';
             break;
     }
-
 }
+
+
+
+    function outputTreatment(option) {
+        // Get the HTML element by its ID
+        var preferredTreatment = document.getElementById("treatment_preferred");
+        var alternativeTreatment = document.getElementById("treatment_alternative")
+    
+        // Reset the output content
+        preferredTreatment.innerText = "";
+        alternativeTreatment.innerText = "";
+
+    
+        if (age == "0-4") {
+            switch (option) {
+                case 'Step 1':
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
+                    break;
+                case 'Step 2':
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
+                    break;
+                case 'Step 3':
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
+                    break;
+                case 'Step 4':
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
+                    break;
+                case 'Step 5':
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
+                    break;
+                case 'Step 6':
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
+                    break;
+            }
+        } else if (age == "5-11") {
+            switch (option) {
+                case 'Step 1':
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
+                    break;
+                case 'Step 2':
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
+                    break;
+                case 'Step 3':
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
+                    break;
+                case 'Step 4':
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
+                    break;
+                case 'Step 5':
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
+                    break;
+                case 'Step 6':
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
+                    break;
+            }
+        } else if (age == "12+") {
+            switch (option) {
+                case 'Step 1':
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
+                    break;
+                case 'Step 2':
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
+                    break;
+                case 'Step 3':
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
+                    break;
+                case 'Step 4':
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
+                    break;
+                case 'Step 5':
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
+                    break;
+                case 'Step 6':
+                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    alternativeTreatment.innerText = "a";
+                    break;
+            }
+        } else {
+            // Handle the case when age doesn't match any condition
+            preferredTreatment.innerText = "Invalid Selection";
+            alternativeTreatment.innerText = "";
+        }
+    }
+    

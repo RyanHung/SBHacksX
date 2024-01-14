@@ -126,17 +126,42 @@ text{
     padding-left:20px;
     padding-right:30px;
     line-height:1.5;
-    animation: fadeInUp 1s ease-out; /* Adjust the animation duration and timing function as needed */
 }
 
-  /* Define the keyframes for the animation */
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  /* Input box */
+  #prompt {
+    width: 2;
+    padding: 10px;
+    border: 10px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+  
+  /* Button */
+  #submit {
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #submit:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+  /* Response area */
+  #response {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 15px;
+    font-size: 14px;
+  }
+  
+  /* Improved readability */
+  #response p {
+    line-height: 1.5;
   }
