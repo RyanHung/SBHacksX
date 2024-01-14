@@ -165,3 +165,16 @@ text{
   #response p {
     line-height: 1.5;
   }
+
+  .output-box {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    margin-bottom: 10px;
+    width : 60  vh;
+    font-size:16px;
+    text-align: center;
+    margin: 0 auto;
+    visibility: hidden;
+  }
