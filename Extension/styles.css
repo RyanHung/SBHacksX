@@ -26,7 +26,7 @@ body {
     display: inline-block;
 }
 
-button {
+.back-button {
     background-color: #ff0000;
     color: #fff;
     font-size: 1.5rem;
