@@ -635,11 +635,11 @@ function submit()
     if(count > 0)
     {
 
-        if(severity <= 3.33)
+        if(severity * 5 <= 3.33)
         {
             message += "Maintain current step. Regular follow-up every 1-6 months. Consider step down if well controlled for at least 3 months. "
         }
-        else if(severity <= 6.66)
+        else if(severity * 5 <= 6.66)
         {
             if(age == '0-4')
             {
@@ -662,7 +662,7 @@ function submit()
             message += "Consider short course of oral cortisteroids. Step up 1 - 2 steps. Reevaluate in 2 weeks to achieve control. ";
         }
 
-        if(severity > 0.66)
+        if(severity * 5 > 0.66)
         {
             message += "Before step up in treatment, review adherence to medication, inhaler technique, and environmental control. If alternative treatment was used, discontinue and use preferred treatment for that step. For side effects, consider alternative treatment options. ";
         }

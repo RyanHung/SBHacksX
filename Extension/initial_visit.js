@@ -467,16 +467,16 @@ function submit()
     if(count > 0)
     {
 
-        if(severity <= 2.5)
+        if(severity * 3.3333 <= 2.5)
         {
             message += "Step 1 is recommended. ";
         }
-        else if(severity <= 5)
+        else if(severity * 3.3333 <= 5)
         {
             message += "Step 2 is recommended. ";
 
         }
-        else if(severity <= 7.5)
+        else if(severity * 3.3333 <= 7.5)
         {
             if(age == '0-4' || age == '12+')
             {
