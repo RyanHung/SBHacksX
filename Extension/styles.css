@@ -156,7 +156,9 @@ text{
   /* Response area */
   #response {
     border: 3px solid #ccc;
-    border-radius: 5px;
+    background-color: #404954;
+    color: lightgray;
+    border-radius: 3px;
     padding: 15px;
     margin-top: 15px;
     font-size: 14px;
