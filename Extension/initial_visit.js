@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+
     var ageButton = document.getElementById("age_button"); //copy lines 2-13 for every dropdown menu
     var ageContent = document.getElementById("age_content");
 
@@ -214,8 +215,13 @@ function agemodify()
 
 }
 
-var weight = 0;
-var weightcount = 0;
+var symptomSeverity = -1;
+var awakeningsSeverity = -1;
+var interferenceSeverity = -1;
+var sabaSeverity = -1;
+var lungSeverity = -1;
+var questionnaireSeverity = -1;
+var exacerbationsSeverity = -1;
 
 function selectOptionSymptoms(option) {
     var dropdownButton = document.getElementById("symptoms_button"); //make sure id matches drop down menu
@@ -224,19 +230,16 @@ function selectOptionSymptoms(option) {
 
     switch (option) {
         case '&lt;= 2 days per week':
-            weightcount += 1;
+            symptomSeverity = 0;
             break;
         case "> 2 days per week":
-            weight += 1;
-            weightcount += 1;
+            symptomSeverity = 1
             break;
         case "Daily":
-            weight += 2;
-            weightcount += 1;
+            symptomSeverity = 2;
             break;
         case "Throughout the day":
-            weight += 3;
-            weightcount += 1;
+            symptomSeverity = 3;
             break;
     }
 
@@ -249,35 +252,29 @@ function selectOptionAwakenings(option) {
 
     switch (option) {
         case '&lt;= 2 days per week':
-            weightcount += 1;
+            awakeningsSeverity = 0;
             break;
         case "<=2 times per month":
-            weightcount += 1;
+            awakeningsSeverity = 0;
             break;
         case "3-4x/month":
-            weight += 1;
-            weightcount += 1;
+            awakeningsSeverity = 1;
             break;
         case "1x/week but not nightly":
-            weight += 2;
-            weightcount += 1;
+            awakeningsSeverity = 2;
             break;
 
         case "Often 7x/week":
-            weight += 3;
-            weightcount += 1;
+            awakeningsSeverity = 3;
             break;
         case "3-4x per month":
-            weight += 2;
-            weightcount += 1;
+            awakeningsSeverity = 2;
             break;
         case "1-2 times per month":
-            weight += 1;
-            weightcount += 1;
+            awakeningsSeverity= 1;
             break;
         case "Over 1x per week":
-            weight += 3;
-            weightcount += 1;
+            awakeningsSeverity= 3;
             break;
     }
 
@@ -290,19 +287,16 @@ function selectOptionInterference(option) {
 
     switch (option) {
         case 'None':
-            weightcount += 1;
+            interferenceSeverity= 0;
             break;
         case "Minor Limitation":
-            weight += 1;
-            weightcount += 1;
+            interferenceSeverity= 1;
             break;
         case "Some Limitation":
-            weight += 2;
-            weightcount += 1;
+            interferenceSeverity= 2;
             break;
         case "Extremely Limited":
-            weight += 3;
-            weightcount += 1;
+            interferenceSeverity= 3;
             break;
     }
 
@@ -315,19 +309,16 @@ function selectOptionSaba(option) {
 
     switch (option) {
         case '<= 2 days per week':
-            weightcount += 1;
+            sabaSeverity= 0;
             break;
         case '> 2 days per week':
-            weight += 1;
-            weightcount += 1;
+            sabaSeverity= 1;
             break;
         case 'Several times per day':
-            weight += 3;
-            weightcount += 1;
+            sabaSeverity = 3;
             break;
         case "Daily":
-            weight += 2;
-            weightcount += 1;
+            sabaSeverity= 2;
             break;
     }
 
