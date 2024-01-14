@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     treatmentContent.addEventListener("click", function (event) {
         if (event.target.tagName === "A") {
+            event.preventDefault();
             selectOptionTreatment(event.target.dataset.option); //make a new function for each drop down menu
         }
     });
@@ -66,6 +67,9 @@ function selectOptionTreatment(option) {
         case 'dosage':
             // Redirect to dosages
             window.location.href = 'asthma_daily_dosage.html';
+            break;
+        case 'gpt':
+            window.location.href = 'asthma_gpt.html';
             break;
     }
 

@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     ageContent.addEventListener("click", function (event) {
         if (event.target.tagName === "A") {
+            event.preventDefault();
             selectOptionAge(event.target.dataset.option); //make a new function for each drop down menu
         }
     });
@@ -15,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var stepsButton = document.getElementById("steps_button");
     var stepsContent = document.getElementById("steps_content");
 
+    symptomsButton.addEventListener("click", function(){
+        event.preventDefault();
     stepsButton.addEventListener("click", function(){
         toggleDropdown("steps")
     });

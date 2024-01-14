@@ -10,7 +10,7 @@
 
 <div class = "content-container">
     <h1>Follow-up Visits: Assessing Asthma Control and Adjusting Therapy</h1>
-    <button id="goBackButton">Go Back</button>
+    <button class = 'back-button' id="goBackButton">Go Back</button>
     <div class="container">
         <div class="dropdown" id="age">
             <h2> What is the patient's age?</h2>
@@ -52,6 +52,35 @@
             <div class="dropdown-content" id="saba_content"></div>
         </div>
     </div>
+
+    <div class="container">
+        <div class="dropdown" id="lung">
+            <h2> Lung function - FEV1, FVC</h2>
+            <button class="dropbtn" id="lung_button">Select an Option</button>
+            <div class="dropdown-content" id="lung_content"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="dropdown" id="questionnaire">
+            <h2> Validated questionnaires - ATAQ, ACQ, ACT</h2>
+            <button class="dropbtn" id="questionnaire_button">Select an Option</button>
+            <div class="dropdown-content" id="questionnaire_content"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="dropdown" id="exacerbations">
+            <h2> Asthma exacerbations requiring oral systemic corticosteroids</h2>
+            <button class="dropbtn" id="exacerbations_button">Select an Option</button>
+            <div class="dropdown-content" id="exacerbations_content"></div>
+        </div>
+    </div>
+    <div class= "container" style="padding-top: 50px;">
+        <button class = 'submit-button' id="submitButton">Submit</button>
+    </div>
+    <text id="output-message"></text>
+
 </div>
 
 <script src="following_visit.js"></script>
