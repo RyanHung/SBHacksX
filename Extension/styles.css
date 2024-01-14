@@ -27,7 +27,7 @@ body {
 }
 
 .back-button {
-    background-color: #ff0000;
+    background-color: #0053ac;
     color: #fff;
     font-size: 1.5rem;
     padding: 10px;
@@ -113,6 +113,7 @@ h1 {
     text-align: center; /* Center the title */
     padding: 20px;
     background-color: #e0e0e0;
+    border-radius: 20;
 }
 
 h2 {
