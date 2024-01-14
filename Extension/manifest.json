@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Medication Diagnosis TLDR",
-  "description": "This an extension for abstracting information allowing for easier classification of severity and treatment",
+  "name": "BreatheEasy: The Perfect Asthma Assistant",
+  "description": "This an extension for allowing both doctors and patients alike to look up treatment methods easily.",
   "version": "1.0",
   
   "action": {
