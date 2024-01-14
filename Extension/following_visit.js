@@ -25,14 +25,59 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    var awakeningsButton = document.getElementById("awakenings_button");
+    var awakeningsContent = document.getElementById("awakenings_content");
+
+    awakeningsButton.addEventListener("click", function(){
+        toggleDropdown("awakenings");
+    });
+    
+    awakeningsContent.addEventListener("click", function (event) {
+        if (event.target.tagName === "A") {
+            selectOptionAwakenings(event.target.dataset.option);
+        }
+    });
+
+    var interferenceButton = document.getElementById("interference_button");
+    var interferenceContent = document.getElementById("interference_content");
+
+    interferenceButton.addEventListener("click", function(){
+        toggleDropdown("interference");
+    });
+    
+    interferenceContent.addEventListener("click", function (event) {
+        if (event.target.tagName === "A") {
+            selectOptionInterference(event.target.dataset.option);
+        }
+    });
+
+    var sabaButton = document.getElementById("saba_button");
+    var sabaContent = document.getElementById("saba_content");
+
+    sabaButton.addEventListener("click", function(){
+        toggleDropdown("saba");
+    });
+    
+    sabaContent.addEventListener("click", function (event) {
+        if (event.target.tagName === "A") {
+            selectOptionSaba(event.target.dataset.option);
+        }
+    });
+
 
     // Close the dropdown if the user clicks outside of it
     window.addEventListener("click", function (event) {
         if (!event.target.matches('.dropbtn')) {
             var ageDropdown = document.getElementById("age"); //make a list of all dropdowns here and close all of them
             var symptomsDropdown = document.getElementById("symptoms");
+            var awakeningsDropdown = document.getElementById("awakenings");
+            var interferenceDropdown = document.getElementById("interference");
+            var sabaDropdown = this.document.getElementById("saba");
             ageDropdown.classList.remove("open"); //call the remove function for every single dropdown variable
             symptomsDropdown.classList.remove("open");
+            awakeningsDropdown.classList.remove("open");
+            interferenceDropdown.classList.remove("open");
+            sabaDropdown.classList.remove("open");
         }
     });
 
@@ -107,8 +152,44 @@ function agemodify()
     else if(age == '5-11')
     {
         symptoms_dropdown_button.innerHTML = 'Select an Option';
-        symptoms_dropdown_content.innerHTML = '<a href="#" data-option="<= 2 days per week but not more than once on each day"><= 2 days per week but not more than once on each day</a> <a href="#" data-option="> 2 days per week or multiple times on <= 2 days per weekk">> 2 days per week or multiple times on <= 2 days per week</a><a href="#" data-option="Throughout the day">Throughout the day</a><a href="#" data-option="Not applicable">Not applicable</a>';
+        symptoms_dropdown_content.innerHTML = '<a href="#" data-option="<= 2 days per week but not more than once on each day"><= 2 days per week but not more than once on each day</a> <a href="#" data-option="> 2 days per week or multiple times on <= 2 days per week">> 2 days per week or multiple times on <= 2 days per week</a><a href="#" data-option="Throughout the day">Throughout the day</a><a href="#" data-option="Not applicable">Not applicable</a>';
     }
+    else if(age == '12+')
+    {
+        symptoms_dropdown_button.innerHTML = 'Select an Option';
+        symptoms_dropdown_content.innerHTML = '<a href="#" data-option="<= 2 days per week"><= 2 days per week</a> <a href="#" data-option="> 2 days per week"> > 2 days per week</a><a href="#" data-option="Throughout the day">Throughout the day</a><a href="#" data-option="Not applicable">Not applicable</a>';
+    }
+
+    var awakenings_dropdown_button = document.getElementById("awakenings_button");
+    var awakenings_dropdown_content = document.getElementById("awakenings_content")
+
+    if(age == '0-4')
+    {
+        awakenings_dropdown_button.innerHTML = 'Select an Option';
+        awakenings_dropdown_content.innerHTML = '<a href="#" data-option="<= 1x per month"><= 1x per month</a> <a href="#" data-option="> 1x per month"> >= 1x per month</a><a href="#" data-option="> 1x per week"> > 1x per week</a><a href="#" data-option="Not applicable">Not applicable</a>';
+    }
+    else if(age == '5-11')
+    {
+        awakenings_dropdown_button.innerHTML = 'Select an Option';
+        awakenings_dropdown_content.innerHTML = '<a href="#" data-option="<= 1x per month"><= 1x per month</a> <a href="#" data-option=">= 2x per month"> >= 2x per month</a> <a href="#" data-option=">= 2x per week"> >= 2x per week</a><a href="#" data-option="Not applicable">Not applicable</a>';
+    }
+    else if(age == '12+')
+    {
+        awakenings_dropdown_button.innerHTML = 'Select an Option';
+        awakenings_dropdown_content.innerHTML = '<a href="#" data-option="<= 2x per month"><= 2x per month</a> <a href="#" data-option="1 - 3x per week">> 1 - 3x per week</a><a href="#" data-option=">= 4x per week"> >= 4x per week</a><a href="#" data-option="Not applicable">Not applicable</a>';
+    }
+
+    var interference_dropdown_button = document.getElementById("interference_button");
+    var interference_dropdown_content = document.getElementById("interference_content")
+
+    interference_dropdown_button.innerHTML = 'Select an Option';
+    interference_dropdown_content.innerHTML = '<a href="#" data-option="None">None</a> <a href="#" data-option="Some limitation">Some limitation</a><a href="#" data-option="Extremely limited">Extremely limited</a><a href="#" data-option="Not applicable">Not applicable</a>';
+
+    var saba_dropdown_button = document.getElementById("saba_button");
+    var saba_dropdown_content = document.getElementById("saba_content")
+
+    saba_dropdown_button.innerHTML = 'Select an Option';
+    saba_dropdown_content.innerHTML = '<a href="#" data-option="<= 2 days per week"><= 2 days per week</a> <a href="#" data-option="> 2 days per week">> 2 days per week</a><a href="#" data-option="Several times per day">Several times per day</a><a href="#" data-option="Not applicable">Not applicable</a>';
 }
 
 var weight = 0;
@@ -120,20 +201,151 @@ function selectOptionSymptoms(option) {
     toggleDropdown("symptoms"); // Close the dropdown after selecting an option
 
     switch (option) {
-        case '<= 2 days per week but not more than once on each day':
-            weightcount += 1;
+        case '<= 2 days per week':
+            if(age == '0-4' || age == '12+')
+            {
+                weightcount += 1;
+            }
             break;
-        case '<= 2 days per week but more than once on each day':
+        case '< 2 days per week':
+            if(age == '0-4' || age == '12+')
+            {
+                weight += 1;
+                weightcount += 1;
+            }
+            break;
+        case '<= 2 days per week but not more than once on each day':
+            if(age == '5-11')
+            {
+                weightcount += 1;
+            }
+            break;
+        case '> 2 days per week or multiple times on <= 2 days per week':
             if(age == '5-11')
             {
                 weight += 1;
+                weightcount += 1;
             }
+            break;
+        case '<= 2 days per week':
+            if(age == '12+')
+            {
+                weightcount += 1;
+            }
+            break;
+        case "Throughout the day":
+            weight += 2;
             weightcount += 1;
-        case "> 2 days per week":
+            break;
+        case "Not Applicable":
+            break;
+    }
+
+}
+
+function selectOptionAwakenings(option) {
+    var dropdownButton = document.getElementById("awakenings_button"); //make sure id matches drop down menu
+    dropdownButton.innerText = option;
+    toggleDropdown("awakenings"); // Close the dropdown after selecting an option
+
+    switch (option) {
+        case '<= 1x per month':
+            if(age == '0-4' || age == '5-11')
+            {
+                weightcount += 1;
+            }
+            break;
+        case '> 1x per month':
+            if(age == '0-4')
+            {
+                weight += 1;
+                weightcount += 1;
+            }
+            break;
+        case '> 1x per week':
+            if(age == '0-4')
+            {
+                weight += 2;
+                weightcount += 1;
+            }
+            break;
+        case '>= 2x per month':
+            if(age == '5-11')
+            {
+                weight += 1;
+                weightcount += 1;
+            }
+            break;
+        case '>= 2x per week':
+            if(age == '5-11')
+            {
+                weight += 2;
+                weightcount += 1;
+            }
+            break;
+        case '<= 2x per month':
+            if(age == '12+')
+            {
+                weightcount += 1;
+            }
+            break;
+        case '1 - 3x per week':
+            if(age == '12+')
+            {
+                weight += 1;
+                weightcount += 1;
+            }
+            break;
+        case '>= 4x per week':
+            if(age == '12+')
+            {
+                weight += 2;
+                weightcount += 1;
+            }
+            break;
+        case "Not Applicable":
+            break;
+    }
+
+}
+
+function selectOptionInterference(option) {
+    var dropdownButton = document.getElementById("interference_button"); //make sure id matches drop down menu
+    dropdownButton.innerText = option;
+    toggleDropdown("interference"); // Close the dropdown after selecting an option
+
+    switch (option) {
+        case 'None':
+            weightcount += 1;
+            break;
+        case 'Some limitation':
             weight += 1;
             weightcount += 1;
             break;
-        case "Throughout the day":
+        case 'Extremely limited':
+            weight += 2;
+            weightcount += 1;
+            break;
+        case "Not Applicable":
+            break;
+    }
+
+}
+
+function selectOptionSaba(option) {
+    var dropdownButton = document.getElementById("saba_button"); //make sure id matches drop down menu
+    dropdownButton.innerText = option;
+    toggleDropdown("saba"); // Close the dropdown after selecting an option
+
+    switch (option) {
+        case '<= 2 days per week':
+            weightcount += 1;
+            break;
+        case '> 2 days per week':
+            weight += 1;
+            weightcount += 1;
+            break;
+        case 'Several times per day':
             weight += 2;
             weightcount += 1;
             break;
