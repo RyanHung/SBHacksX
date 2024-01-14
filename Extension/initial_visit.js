@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
     lungContent.addEventListener("click", function (event) {
         if (event.target.tagName === "A") {
             event.preventDefault();
-            selectOptionSaba(event.target.dataset.option);
+            selectOptionLung(event.target.dataset.option);
         }
     });
 
