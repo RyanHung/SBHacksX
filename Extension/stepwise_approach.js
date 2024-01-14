@@ -182,28 +182,28 @@ function selectOptionSteps(option) {
         } else if (age == "5-11") {
             switch (option) {
                 case 'Step 1':
-                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
-                    alternativeTreatment.innerText = "a";
+                    preferredTreatment.innerText = "SABA As Needed";
+                    alternativeTreatment.innerText = "";
                     break;
                 case 'Step 2':
-                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
-                    alternativeTreatment.innerText = "a";
+                    preferredTreatment.innerText = "Low Dose ICS";
+                    alternativeTreatment.innerText = "Cromolyn, LTRA, or Theophylline";
                     break;
                 case 'Step 3':
-                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
+                    preferredTreatment.innerText = "Low Dose ICS + Either LABA, LTRA or Theophylline OR Medium-Dose ICS";
                     alternativeTreatment.innerText = "a";
                     break;
                 case 'Step 4':
-                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
-                    alternativeTreatment.innerText = "a";
+                    preferredTreatment.innerText = "Medium Dose ICS + LABA";
+                    alternativeTreatment.innerText = "Medium Dose ICS + Either LTRA or Theophylline";
                     break;
                 case 'Step 5':
-                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
-                    alternativeTreatment.innerText = "a";
+                    preferredTreatment.innerText = "High-Dose ICS + LABA";
+                    alternativeTreatment.innerText = "High-Dose ICS + either LTRA or Theophylline";
                     break;
                 case 'Step 6':
-                    preferredTreatment.innerText = "Output for Step 1 (Age 0-4)";
-                    alternativeTreatment.innerText = "a";
+                    preferredTreatment.innerText = "High-Dose ICS + LABA + Oral Corticosteroids";
+                    alternativeTreatment.innerText = "High-Dose ICS + Either LTRA or Theophylline + Oral Corticosteroids";
                     break;
             }
         } else if (age == "12+") {
