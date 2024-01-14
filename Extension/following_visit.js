@@ -64,6 +64,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    var lungButton = document.getElementById("lung_button");
+    var lungContent = document.getElementById("lung_content");
+
+    lungButton.addEventListener("click", function(){
+        toggleDropdown("lung");
+    });
+    
+    lungContent.addEventListener("click", function (event) {
+        if (event.target.tagName === "A") {
+            selectOptionLung(event.target.dataset.option);
+        }
+    });
+
 
     // Close the dropdown if the user clicks outside of it
     window.addEventListener("click", function (event) {
@@ -72,12 +85,14 @@ document.addEventListener("DOMContentLoaded", function () {
             var symptomsDropdown = document.getElementById("symptoms");
             var awakeningsDropdown = document.getElementById("awakenings");
             var interferenceDropdown = document.getElementById("interference");
-            var sabaDropdown = this.document.getElementById("saba");
+            var sabaDropdown = document.getElementById("saba");
+            var lungDropdown = document.getElementById("lung")
             ageDropdown.classList.remove("open"); //call the remove function for every single dropdown variable
             symptomsDropdown.classList.remove("open");
             awakeningsDropdown.classList.remove("open");
             interferenceDropdown.classList.remove("open");
             sabaDropdown.classList.remove("open");
+            lungDropdown.classList.remove("open");
         }
     });
 
@@ -142,7 +157,7 @@ function selectOptionAge(option) {
 function agemodify()
 {
     var symptoms_dropdown_button = document.getElementById("symptoms_button");
-    var symptoms_dropdown_content = document.getElementById("symptoms_content")
+    var symptoms_dropdown_content = document.getElementById("symptoms_content");
 
     if(age == '0-4')
     {
@@ -161,7 +176,7 @@ function agemodify()
     }
 
     var awakenings_dropdown_button = document.getElementById("awakenings_button");
-    var awakenings_dropdown_content = document.getElementById("awakenings_content")
+    var awakenings_dropdown_content = document.getElementById("awakenings_content");
 
     if(age == '0-4')
     {
@@ -180,16 +195,35 @@ function agemodify()
     }
 
     var interference_dropdown_button = document.getElementById("interference_button");
-    var interference_dropdown_content = document.getElementById("interference_content")
+    var interference_dropdown_content = document.getElementById("interference_content");
 
     interference_dropdown_button.innerHTML = 'Select an Option';
     interference_dropdown_content.innerHTML = '<a href="#" data-option="None">None</a> <a href="#" data-option="Some limitation">Some limitation</a><a href="#" data-option="Extremely limited">Extremely limited</a><a href="#" data-option="Not applicable">Not applicable</a>';
 
     var saba_dropdown_button = document.getElementById("saba_button");
-    var saba_dropdown_content = document.getElementById("saba_content")
+    var saba_dropdown_content = document.getElementById("saba_content");
 
     saba_dropdown_button.innerHTML = 'Select an Option';
     saba_dropdown_content.innerHTML = '<a href="#" data-option="<= 2 days per week"><= 2 days per week</a> <a href="#" data-option="> 2 days per week">> 2 days per week</a><a href="#" data-option="Several times per day">Several times per day</a><a href="#" data-option="Not applicable">Not applicable</a>';
+
+    var lung_dropdown_button = document.getElementById("lung_button");
+    var lung_dropdown_content = document.getElementById("lung_content");
+
+    if(age == '0-4')
+    {
+        lung_dropdown_button.innerHTML = 'Select an Option';
+        lung_dropdown_content.innerHTML = '<a href="#" data-option="Not applicable">Not applicable</a>';
+    }
+    else if(age == '5-11')
+    {
+        lung_dropdown_button.innerHTML = 'Select an Option';
+        lung_dropdown_content.innerHTML = '<a href="#" data-option="FEV1 > 80%, FVC > 80%">FEV1 > 80%, FVC > 80%</a> <a href="#" data-option="FEV1 = 60 - 80%, FVC = 75 - 80%">FEV1 = 60 - 80%, FVC = 75 - 80%</a><a href="#" data-option="FEV1 < 60%, FVC < 75%">FEV1 < 60%, FVC < 75%</a><a href="#" data-option="Not applicable">Not applicable</a>';
+    }
+    else if(age == '12+')
+    {
+        lung_dropdown_button.innerHTML = 'Select an Option';
+        lung_dropdown_content.innerHTML = '<a href="#" data-option="FEV1 > 80%">FEV1 > 80%</a> <a href="#" data-option="FEV1 = 60 - 80%"> FEV1 = 60 - 80%</a><a href="#" data-option="FEV1 < 60%">FEV1 < 60%</a><a href="#" data-option="Not applicable">Not applicable</a>';
+    }
 }
 
 var weight = 0;
@@ -350,6 +384,58 @@ function selectOptionSaba(option) {
             weightcount += 1;
             break;
         case "Not Applicable":
+            break;
+    }
+
+}
+
+function selectOptionLung(option) {
+    var dropdownButton = document.getElementById("lung_button"); //make sure id matches drop down menu
+    dropdownButton.innerText = option;
+    toggleDropdown("lung"); // Close the dropdown after selecting an option
+
+    switch (option) {
+        case 'FEV1 > 80%, FVC > 80%':
+            if(age == '5-11')
+            {
+                weightcount += 1;
+                break;
+            }
+        case 'FEV1 = 60 - 80%, FVC = 75 - 80%':
+            if(age == '5-11')
+            {
+                weight += 1;
+                weightcount += 1;
+                break;
+            }
+        case 'FEV1 < 60%, FVC < 75%':
+            if(age == '5-11')
+            {
+                weight += 2;
+                weightcount += 1;
+                break;
+            }
+        case 'FEV1 > 80%':
+            if(age == '12+')
+            {
+                weightcount += 1;
+            }
+
+        case 'FEV1 = 60 - 80%':
+            if(age == '12+')
+            {
+                weight += 1;
+                weightcount += 1;
+            }
+
+        case 'FEV1 < 60%':
+            if(age == '12+')
+            {
+                weight += 2;
+                weightcount += 1;
+            }
+
+        case 'Not applicable':
             break;
     }
 
